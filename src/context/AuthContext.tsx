@@ -4,8 +4,7 @@ import { setAuthHeader } from '@/services/axios';
 import { decodeToken } from '@/utils/jwt';
 import type { User } from '@/types/user';
 import { AuthContext } from './context';
-
-const TOKEN_KEY = 'auth_token';
+import { TOKEN_KEY } from '@/constants/storage';
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [user, setUser] = useState<User | null>(null);
