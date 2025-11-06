@@ -1,12 +1,12 @@
 import { jwtDecode } from 'jwt-decode';
-import type { User } from '@/types/user';
+import type { User, UserTypes } from '@/types/user';
 
 export interface JwtPayload {
   exp: number;
   user_id: string;
   given_name: string;
   family_name: string;
-  userType: string;
+  userType: UserTypes;
 }
 
 export const decodeToken = (token: string): User | null => {
