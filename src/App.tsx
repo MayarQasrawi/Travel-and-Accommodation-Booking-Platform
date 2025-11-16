@@ -1,10 +1,9 @@
-import Login from '@/components/Login';
+import LoginPage from '@/Pages/Login';
 
 function App() {
   return (
     <>
-      <h1>My APP</h1>
-      <Login />
+      <LoginPage />
     </>
   );
 }
