@@ -15,7 +15,7 @@
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,json,css,md}": [
+    "*.{ts,tsx,js,jsx,json,md}": [
       "biome check --write --staged"
     ]
   },
@@ -30,6 +30,7 @@
     "clsx": "^2.1.1",
     "formik": "^2.2.9",
     "jwt-decode": "^4.0.0",
+    "lottie-react": "^2.4.1",
     "lucide-react": "^0.552.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
