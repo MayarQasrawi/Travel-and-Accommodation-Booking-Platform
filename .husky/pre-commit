@@ -1,2 +1,2 @@
-
-npm run lint-staged
+npx lint-staged --concurrent 4
+npx tsc --noEmit

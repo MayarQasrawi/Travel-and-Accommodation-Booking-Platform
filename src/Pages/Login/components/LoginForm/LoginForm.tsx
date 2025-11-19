@@ -26,7 +26,7 @@ const LoginForm: React.FC = () => {
   return (
     <div className="max-w-md mx-auto mt-12 p-6 text-center ">
       <Formik initialValues={initialValues} validationSchema={LoginFormSchema} onSubmit={onSubmit}>
-        {({ handleSubmit, isSubmitting }) => (
+        {({ handleSubmit, isSubmitting, isValid, dirty }) => (
           <form onSubmit={handleSubmit} className="space-y-4">
             <FormikTextInput
               label="User Name"
@@ -44,7 +44,7 @@ const LoginForm: React.FC = () => {
             />
             <FormError message={error?.message ?? ''} />
 
-            <Button type="submit" disabled={isSubmitting} className="w-full">
+            <Button type="submit" disabled={isSubmitting || !isValid || !dirty} className="w-full">
               {isSubmitting ? (
                 <>
                   <Spinner className="mr-2 h-4 w-4" />

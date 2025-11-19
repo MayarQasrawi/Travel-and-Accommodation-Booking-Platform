@@ -18,7 +18,6 @@ export const FormikTextInput: React.FC<FormikTextInputProps> = ({
   placeholder,
   addon,
 }) => {
-
   useFormikContext();
   const [field, meta] = useField({ name });
   const hasError = meta.touched && meta.error;
