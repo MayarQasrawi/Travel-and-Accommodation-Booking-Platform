@@ -116,5 +116,9 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family:  'Quicksand','Poppins', sans-serif;
   }
+  
 }
+
+
