@@ -7,7 +7,7 @@ import { APP_NAME } from "@/constants/storage";
 import type { ContentProps, FooterProps, FormTitleProps, LottieAnimationProps } from "./types";
 
 const AuthLayout = ({ children }: PropsWithChildren) => {
-	return <main className="flex flex-col md:flex-row min-h-screen">{children}</main>;
+	return <main className="flex  flex-row min-h-screen">{children}</main>;
 };
 
 AuthLayout.Brand = ({ children }: PropsWithChildren) => {
