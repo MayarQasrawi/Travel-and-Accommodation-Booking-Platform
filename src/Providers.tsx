@@ -1,30 +1,18 @@
-import { MutationCache, QueryCache, QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { PropsWithChildren } from "react";
-import { toast } from "sonner";
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/context/AuthContext";
-
-const queryClient = new QueryClient({
-	queryCache: new QueryCache({
-		onError: (error, query) => {
-			// Handle failed background refetches
-			if (query.state.data !== undefined) {
-				toast.error(error.message || "Something went wrong");
-			}
-		},
-	}),
-	mutationCache: new MutationCache({
-		onError: (error) => {
-			toast.error(error.message || "Mutation failed");
-		},
-		onSuccess: () => {
-			toast.success("Operation successful");
-		},
-	}),
-});
+import { initNetworkMonitor } from "@/services/networkMonitor";
+import { queryClient } from "@/services/queryClient";
 
 export const Providers = ({ children }: PropsWithChildren) => {
+	useEffect(() => {
+		const cleanup = initNetworkMonitor();
+		return cleanup; // Cleanup on unmount
+	}, []);
+
 	return (
 		<QueryClientProvider client={queryClient}>
 			<AuthProvider>
@@ -35,4 +23,5 @@ export const Providers = ({ children }: PropsWithChildren) => {
 		</QueryClientProvider>
 	);
 };
+
 export default Providers;

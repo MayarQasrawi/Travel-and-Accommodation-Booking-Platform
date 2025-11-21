@@ -7,13 +7,10 @@ const LoginPage: React.FC = () => {
 		<AuthLayout>
 			<AuthLayout.Brand>
 				<AuthLayout.Logo />
-
 				<AuthLayout.Animation />
 			</AuthLayout.Brand>
-
 			<AuthLayout.Form>
 				<AuthLayout.FormTitle title="Sign In" subtitle="Enter your credentials to access your account" />
-
 				<LoginForm />
 			</AuthLayout.Form>
 		</AuthLayout>

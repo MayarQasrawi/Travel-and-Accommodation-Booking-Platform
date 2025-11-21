@@ -1,25 +1,20 @@
-import { useMutation } from '@tanstack/react-query';
-import { LoginAPI } from '../API';
-import type { LoginPayload, LoginResponse } from '../API/types';
-import { useAuth } from '@/hooks/useAuth';
+import { useMutation } from "@tanstack/react-query";
+import type { AxiosError } from "axios";
+import { LoginAPI } from "../API";
+import type { LoginPayload, LoginResponse } from "../API/types";
+import { useHandleLoginSuccess } from "./useHandleLoginSuccess";
 
 export const useLoginMutation = () => {
-  const { setAuth } = useAuth();
+	return useMutation<LoginResponse, AxiosError, LoginPayload>({
+		mutationFn: async (payload: LoginPayload) => {
+			const res = await LoginAPI(payload);
+			return res.data as LoginResponse;
+		},
 
-  return useMutation({
-    mutationFn: async (payload: LoginPayload) => {
-      const res = await LoginAPI(payload);
-      return res.data as LoginResponse;
-    },
+		onError: (error: unknown) => {
+			console.error("Login failed:", error);
+		},
 
-
-    onError: (error) => {
-      console.error('Login failed:', error);
-    },
-    onSuccess: (data) => {
-      setAuth(data.authentication);
-      console.log('Login succeeded:', data);
-    },
-  });
-
+		onSuccess: useHandleLoginSuccess(),
+	});
 };
