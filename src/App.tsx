@@ -1,12 +1,6 @@
-import Login from '@/components/Login';
-
+import LoginPage from "@/Pages/Login";
+import "./index.css";
 function App() {
-  return (
-    <>
-      <h1>My APP</h1>
-      <Login />
-    </>
-  );
+	return <LoginPage />;
 }
-
 export default App;

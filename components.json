@@ -18,5 +18,8 @@
     "lib": "@/lib",
     "hooks": "@/hooks"
   },
-  "registries": {}
-}
+
+  "registries": {
+    "@acme": "https://acme.com/r/{name}.json"
+  
+}}

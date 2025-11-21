@@ -1,4 +1,4 @@
-import jwtDecode from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
 import type { User, UserTypes } from '@/types/user';
 
 export interface JwtPayload {
