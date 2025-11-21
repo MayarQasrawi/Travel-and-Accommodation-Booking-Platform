@@ -8,12 +8,23 @@ interface BaseInputProps {
 	type?: string;
 	placeholder?: string;
 	addon?: React.ReactNode;
+	className?: string;
+	[key: string]: any;
 }
 
-export const BaseInput: React.FC<BaseInputProps> = ({ label, value, onChange, type = "text", placeholder, addon }) => {
+export const BaseInput: React.FC<BaseInputProps> = ({
+	label,
+	value,
+	onChange,
+	type = "text",
+	placeholder,
+	addon,
+	className,
+	...props
+}) => {
 	return (
 		<div className="space-y-2">
-			<InputGroup>
+			<InputGroup {...props}>
 				{addon && <InputGroupAddon>{addon}</InputGroupAddon>}
 				<InputGroupInput
 					value={value}
@@ -21,6 +32,7 @@ export const BaseInput: React.FC<BaseInputProps> = ({ label, value, onChange, ty
 					type={type}
 					placeholder={placeholder}
 					aria-label={label}
+					className={className}
 				/>
 			</InputGroup>
 		</div>
