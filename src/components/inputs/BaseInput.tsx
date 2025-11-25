@@ -2,7 +2,8 @@ import type React from "react";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
 
 interface BaseInputProps {
-	label: string;
+	label?: string;
+	name?: string;
 	value?: string;
 	onChange?: (value: string) => void;
 	type?: string;
@@ -14,6 +15,7 @@ interface BaseInputProps {
 
 export const BaseInput: React.FC<BaseInputProps> = ({
 	label,
+	name,
 	value,
 	onChange,
 	type = "text",
@@ -22,16 +24,25 @@ export const BaseInput: React.FC<BaseInputProps> = ({
 	className,
 	...props
 }) => {
+	const displayLabel = label || name;
+
 	return (
 		<div className="space-y-2">
+			{displayLabel && (
+				<label htmlFor={name} className="block text-sm font-medium">
+					{displayLabel}
+				</label>
+			)}
 			<InputGroup {...props}>
 				{addon && <InputGroupAddon>{addon}</InputGroupAddon>}
 				<InputGroupInput
+					id={name}
+					name={name}
 					value={value}
 					onChange={(e) => onChange?.(e.target.value)}
 					type={type}
 					placeholder={placeholder}
-					aria-label={label}
+					aria-label={displayLabel}
 					className={className}
 				/>
 			</InputGroup>

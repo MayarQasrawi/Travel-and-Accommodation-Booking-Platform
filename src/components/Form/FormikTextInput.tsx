@@ -4,7 +4,7 @@ import BaseInput from "../inputs/BaseInput";
 import FormError from "./FormError";
 
 interface FormikInputProps {
-	label: string;
+	label?: string;
 	name: string;
 	type?: string;
 	placeholder?: string;
