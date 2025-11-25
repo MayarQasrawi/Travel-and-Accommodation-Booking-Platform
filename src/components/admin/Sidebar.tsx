@@ -1,5 +1,5 @@
 import { Building2, DoorOpen, Ellipsis, Hotel, LogOut, User } from "lucide-react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
 	DropdownMenu,
@@ -32,7 +32,7 @@ export default function AdminSidebar() {
 
 	return (
 		<Sidebar collapsible="offcanvas" className="h-screen " variant="floating">
-			<SidebarHeader className="border-b">
+			<SidebarHeader className="border-b ">
 				<div className="flex items-center justify-between">
 					{state === "collapsed" ? null : (
 						<div className="flex items-center gap-2 px-4 py-2">
