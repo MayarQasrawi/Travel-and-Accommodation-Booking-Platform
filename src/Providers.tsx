@@ -10,7 +10,7 @@ import { queryClient } from "@/services/queryClient";
 export const Providers = ({ children }: PropsWithChildren) => {
 	useEffect(() => {
 		const cleanup = initNetworkMonitor();
-		return cleanup; // Cleanup on unmount
+		return cleanup;
 	}, []);
 
 	return (

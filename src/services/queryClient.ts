@@ -15,11 +15,10 @@ export const queryClient = new QueryClient({
 	},
 
 	queryCache: new QueryCache({
-		onError: (error, query) => {
+		onError: (error) => {
 			console.log("Query Error:", error);
-			if (query.state.data !== undefined) {
-				toast.error(error.message || "Something went wrong");
-			}
+
+			toast.error(error.message || "Something went wrong");
 		},
 	}),
 	mutationCache: new MutationCache({

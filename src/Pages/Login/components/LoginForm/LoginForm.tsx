@@ -28,15 +28,8 @@ const LoginForm: React.FC = () => {
 			<Formik initialValues={initialValues} validationSchema={LoginFormSchema} onSubmit={onSubmit}>
 				{({ handleSubmit, isSubmitting, isValid, dirty }) => (
 					<form onSubmit={handleSubmit} className="space-y-4">
+						<FormikTextInput name="userName" type="text" addon={<User size={18} />} placeholder="Enter your name" />
 						<FormikTextInput
-							label="User Name"
-							name="userName"
-							type="text"
-							addon={<User size={18} />}
-							placeholder="Enter your name"
-						/>
-						<FormikTextInput
-							label="Password"
 							name="password"
 							type="password"
 							addon={<LockIcon size={18} />}
