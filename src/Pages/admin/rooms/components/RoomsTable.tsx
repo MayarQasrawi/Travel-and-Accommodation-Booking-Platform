@@ -1,6 +1,6 @@
-import { type Column, DataTable } from "@/components/admin/DataTable";
-import { Badge } from "@/components/ui/badge";
+import { DataTable } from "@/components/admin/DataTable";
 import type { Room } from "../api/types";
+import useRoomColumns from "../hooks/useRoomColumns";
 
 interface RoomsTableProps {
 	rooms: Room[];
@@ -9,41 +9,9 @@ interface RoomsTableProps {
 	isLoading?: boolean;
 }
 
-const columns: Column<Room>[] = [
-	{
-		key: "roomNumber",
-		label: "Room Number",
-	},
-	{
-		key: "availability",
-		label: "Availability",
-		render: (room) => (
-			<Badge variant={room.availability ? "default" : "secondary"}>
-				{room.availability ? "Available" : "Unavailable"}
-			</Badge>
-		),
-	},
-
-	{
-		key: "price",
-		label: "Price",
-		render: (room) => `$${room.price}`,
-	},
-	{
-		key: "roomType",
-		label: "Type",
-	},
-	{
-		key: "capacityOfAdults",
-		label: "Adults Capacity",
-	},
-	{
-		key: "capacityOfChildren",
-		label: "Children Capacity",
-	},
-];
-
 export function RoomsTable({ rooms, onRowClick, onDelete, isLoading }: RoomsTableProps) {
+	const columns = useRoomColumns();
+
 	return (
 		<DataTable
 			columns={columns}
