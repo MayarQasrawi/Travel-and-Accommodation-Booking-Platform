@@ -5,7 +5,6 @@ export const citiesApi = {
 	getCities: (params?: CitiesQueryParams) => {
 		const queryParams = new URLSearchParams();
 		if (params?.name) queryParams.append("name", params.name);
-		if (params?.country) queryParams.append("country", params.country);
 
 		const queryString = queryParams.toString();
 		return axiosInstance.get<City[]>(`/cities${queryString ? `?${queryString}` : ""}`);
@@ -19,7 +18,7 @@ export const citiesApi = {
 		return axiosInstance.put<City>(`/cities/${data.id}`, data);
 	},
 
-	deleteCity: (cityId: string) => {
+	deleteCity: (cityId: number) => {
 		return axiosInstance.delete<void>(`/cities/${cityId}`);
 	},
 };

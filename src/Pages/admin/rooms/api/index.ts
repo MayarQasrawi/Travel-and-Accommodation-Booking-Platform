@@ -14,7 +14,7 @@ export const roomsApi = {
 		return axiosInstance.put<Room>(`/rooms/${data.roomId}`, data);
 	},
 
-	deleteRoom: (roomId: string) => {
+	deleteRoom: (roomId: number) => {
 		return axiosInstance.delete<void>(`/rooms/${roomId}`);
 	},
 
