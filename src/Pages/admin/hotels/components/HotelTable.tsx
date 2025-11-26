@@ -1,6 +1,6 @@
-import { Star } from "lucide-react";
 import { useMemo } from "react";
 import { type Column, DataTable } from "@/components/admin/DataTable";
+import { StarRating } from "@/components/admin/StarRating";
 import type { Hotel } from "@/Pages/admin/hotels/api/types";
 import { useCitiesQuery } from "../../cities/hooks/useCitiesQuery";
 
@@ -24,18 +24,7 @@ export function HotelTable({ hotels, onRowClick, onDelete, isLoading }: HotelTab
 			{
 				key: "starRating",
 				label: "Star Rating",
-				render: (hotel) => (
-					<div className="flex items-center gap-1">
-						{[1, 2, 3, 4, 5].map((value) => (
-							<Star
-								key={value}
-								className={`h-4 w-4 ${
-									value <= hotel.starRating ? "fill-yellow-400 text-yellow-400" : "fill-gray-200 text-gray-200"
-								}`}
-							/>
-						))}
-					</div>
-				),
+				render: (hotel) => <StarRating rating={hotel.starRating} />,
 			},
 			{
 				key: "hotelType",
