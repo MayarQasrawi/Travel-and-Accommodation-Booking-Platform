@@ -12,7 +12,7 @@ export interface UpdateCityData extends CreateCityData {
 }
 
 export interface City {
-	id: string;
+	id: number;
 	name: string;
 	description: string;
 	// postOffice: string
