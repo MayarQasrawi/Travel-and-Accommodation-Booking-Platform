@@ -1,4 +1,3 @@
-// useUpdateHotelMutation.ts
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { hotelsApi } from "../api";
 import type { UpdateHotelData } from "../api/types";

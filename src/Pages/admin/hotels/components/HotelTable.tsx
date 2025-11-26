@@ -1,8 +1,7 @@
-import { useMemo } from "react";
-import { type Column, DataTable } from "@/components/admin/DataTable";
-import { StarRating } from "@/components/admin/StarRating";
+import { DataTable } from "@/components/admin/DataTable";
 import type { Hotel } from "@/Pages/admin/hotels/api/types";
 import { useCitiesQuery } from "../../cities/hooks/useCitiesQuery";
+import useHotelColumns from "../hooks/useHotelColumns";
 
 interface HotelTableProps {
 	hotels: Hotel[];
@@ -15,41 +14,7 @@ export function HotelTable({ hotels, onRowClick, onDelete, isLoading }: HotelTab
 	const { data } = useCitiesQuery();
 	const cities = data?.data || [];
 
-	const columns: Column<Hotel>[] = useMemo(
-		() => [
-			{
-				key: "hotelName",
-				label: "Name",
-			},
-			{
-				key: "starRating",
-				label: "Star Rating",
-				render: (hotel) => <StarRating rating={hotel.starRating} />,
-			},
-			{
-				key: "hotelType",
-				label: "Hotel Type",
-			},
-
-			{
-				key: "location",
-				label: "Location",
-			},
-			{
-				key: "cityId",
-				label: "City",
-				render: (hotel) => {
-					const city = cities.find((c) => c.id === hotel.cityId);
-					return city?.name || `City ${hotel.cityId}`;
-				},
-			},
-			{
-				key: "availableRooms",
-				label: "Rooms",
-			},
-		],
-		[cities],
-	);
+	const columns = useHotelColumns(cities);
 
 	return (
 		<DataTable
