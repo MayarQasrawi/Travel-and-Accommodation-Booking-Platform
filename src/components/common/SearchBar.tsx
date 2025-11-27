@@ -23,7 +23,9 @@ export default function SearchBar({ placeholder = "Search...", onSearch }: Searc
 				value={query}
 				onChange={setQuery}
 				className="md:w-xl"
-				onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
+				onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+					if (e.key === "Enter") handleSubmit();
+				}}
 			/>
 
 			<Button onClick={handleSubmit} className="flex items-center gap-2">
