@@ -1,6 +1,7 @@
 export interface HotelsQueryParams {
-	name?: string;
-	city?: string;
+	search?: string;
+	pageNumber?: number;
+	pageSize?: number;
 }
 
 export interface CreateHotelData {

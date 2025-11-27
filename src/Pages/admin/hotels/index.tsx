@@ -6,10 +6,14 @@ import { useDeleteHotelMutation } from "./hooks/useDeleteHotelMutation";
 import { useHotelsQuery } from "./hooks/useHotelsQuery";
 
 function HotelsPage() {
-	const { data, isLoading } = useHotelsQuery();
-	const hotels = data?.data || [];
 	const store = useHotelStore();
+	const { data, isLoading } = useHotelsQuery({ search: store.searchQuery });
+	const hotels = data || [];
 	const deleteMutation = useDeleteHotelMutation();
+
+	const handleSearch = (query: string) => {
+		store.setSearchQuery(query);
+	};
 
 	return (
 		<CrudPage
@@ -22,6 +26,8 @@ function HotelsPage() {
 			onDelete={async (hotel) => {
 				await deleteMutation.mutateAsync(hotel.id);
 			}}
+			onSearch={handleSearch}
+			searchPlaceholder="Search hotels by name or description..."
 		/>
 	);
 }

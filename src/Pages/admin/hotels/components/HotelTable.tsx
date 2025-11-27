@@ -12,7 +12,7 @@ interface HotelTableProps {
 
 export function HotelTable({ hotels, onRowClick, onDelete, isLoading }: HotelTableProps) {
 	const { data } = useCitiesQuery();
-	const cities = data?.data || [];
+	const cities = data || [];
 
 	const columns = useHotelColumns(cities);
 
