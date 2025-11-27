@@ -59,11 +59,15 @@ export function DataTable<T extends { id: number }>({
 								className={onRowClick ? "cursor-pointer hover:bg-muted/50" : ""}
 								onClick={() => onRowClick?.(row)}
 							>
-								{columns.map((column) => (
-									<TableCell key={String(column.key)}>
-										{column.render ? column.render(row) : String(row[column.key as keyof T] ?? "")}
-									</TableCell>
-								))}
+								{columns.map((column) => {
+									const value = row[column.key as keyof T];
+									const displayValue = value === null || value === undefined || value === "" ? "-" : String(value);
+
+									return (
+										<TableCell key={String(column.key)}>{column.render ? column.render(row) : displayValue}</TableCell>
+									);
+								})}
+
 								{onDelete && (
 									<TableCell>
 										<Button
