@@ -8,7 +8,7 @@ import { useDeleteCityMutation } from "./hooks/useDeleteCityMutation";
 function CitiesPage() {
 	const store = useCityStore();
 	const { data, isLoading } = useCitiesQuery({ search: store.searchQuery });
-	const cities = data?.data || [];
+	const cities = data || [];
 	const deleteMutation = useDeleteCityMutation();
 
 	const handleSearch = (query: string) => {
