@@ -22,7 +22,7 @@ export function CrudPage<T extends { id: number; name: string }>({
 	onSearch,
 	searchPlaceholder,
 }: CrudPageProps<T>) {
-	const { deleteOpen, selected, openCreate, closeDelete, searchQuery } = store();
+	const { deleteOpen, selected, openCreate, closeDelete } = store();
 
 	return (
 		<>
