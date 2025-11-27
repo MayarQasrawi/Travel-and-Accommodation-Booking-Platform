@@ -1,7 +1,7 @@
-import { Globe } from "lucide-react";
+import { MapPinned } from "lucide-react";
 
 export const TOKEN_KEY = "auth_token";
-export const APP_NAME = "Roamly";
+export const APP_NAME = "Travio";
 
 // Correct type
-export const LOGO = Globe;
+export const LOGO = MapPinned;

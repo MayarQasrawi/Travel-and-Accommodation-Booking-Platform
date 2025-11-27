@@ -8,7 +8,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
 	return (
 		<Sonner
 			theme={theme as ToasterProps["theme"]}
-			className="toaster group"
+			className="toaster group "
 			icons={{
 				success: <CircleCheckIcon className="size-4" />,
 				info: <InfoIcon className="size-4" />,
@@ -18,6 +18,8 @@ const Toaster = ({ ...props }: ToasterProps) => {
 			}}
 			style={
 				{
+					  fontFamily: "'Quicksand', Poppins, sans-serif",
+
 					"--normal-bg": "var(--popover)",
 					"--normal-text": "var(--popover-foreground)",
 					"--normal-border": "var(--border)",

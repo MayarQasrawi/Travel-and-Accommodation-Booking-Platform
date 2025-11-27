@@ -1,17 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "@/index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 import Providers from "@/Providers.tsx";
-import App from "./App";
+import router from "@/routers";
 
-const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <App />,
-	},
-]);
-
+// biome-ignore lint/style/noNonNullAssertion: Root is present in index.html
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
 		<Providers>
