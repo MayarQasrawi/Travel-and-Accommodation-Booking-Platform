@@ -6,10 +6,14 @@ import { useDeleteRoomMutation } from "./hooks/useDeleteRoomMutation";
 import { useRoomsQuery } from "./hooks/useRoomsQuery";
 
 function RoomsPage() {
-	const { data, isLoading } = useRoomsQuery();
-	const rooms = data?.data || [];
 	const store = useRoomStore();
+	const { data, isLoading } = useRoomsQuery({ search: store.searchQuery });
+	console.log("rooms:", data);
+	const rooms = data || [];
 	const deleteMutation = useDeleteRoomMutation();
+	const handleSearch = (query: string) => {
+		store.setSearchQuery(query);
+	};
 
 	return (
 		<CrudPage
@@ -17,9 +21,11 @@ function RoomsPage() {
 			table={<RoomsTable rooms={rooms} isLoading={isLoading} onRowClick={store.openEdit} onDelete={store.openDelete} />}
 			form={<RoomFormSheet open={store.formOpen} onOpenChange={store.closeForm} room={store.selected} />}
 			store={useRoomStore}
+			onSearch={handleSearch}
 			onDelete={async (room) => {
 				await deleteMutation.mutateAsync(room.roomId);
 			}}
+			searchPlaceholder="Search rooms by number..."
 		/>
 	);
 }

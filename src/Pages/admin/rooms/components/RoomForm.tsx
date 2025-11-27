@@ -1,6 +1,8 @@
 import { Field, Formik, type FormikHelpers } from "formik";
 import FormFooter from "@/components/Form/FormFooter";
 import FormikInput from "@/components/Form/FormikTextInput";
+import { Checkbox } from "@/components/ui/checkbox"; // import shadcn checkbox
+import { Label } from "@/components/ui/label"; // optional for label styling
 import type { Room } from "../api/types";
 import { roomFormSchema } from "./roomFormSchema";
 
@@ -9,6 +11,7 @@ export interface RoomFormValues {
 	capacityOfAdults: number;
 	capacityOfChildren: number;
 	availability: boolean;
+	price: number;
 }
 
 interface RoomFormProps {
@@ -23,6 +26,7 @@ export function RoomForm({ initialValues, onSubmit, onCancel }: RoomFormProps) {
 		capacityOfAdults: initialValues?.capacityOfAdults || 1,
 		capacityOfChildren: initialValues?.capacityOfChildren || 0,
 		availability: initialValues?.availability ?? true,
+		price: initialValues?.price || 0,
 	};
 
 	const fields = [
@@ -67,17 +71,14 @@ export function RoomForm({ initialValues, onSubmit, onCancel }: RoomFormProps) {
 					))}
 
 					<div className="flex items-center space-x-2">
-						<Field
-							type="checkbox"
+						<Checkbox
 							id="availability"
-							name="availability"
 							checked={values.availability}
-							onChange={() => setFieldValue("availability", !values.availability)}
-							className="h-4 w-4"
+							onCheckedChange={(checked) => setFieldValue("availability", checked)}
 						/>
-						<label htmlFor="availability" className="text-sm font-medium">
+						<Label htmlFor="availability" className="text-sm font-medium">
 							Available
-						</label>
+						</Label>
 					</div>
 
 					<FormFooter

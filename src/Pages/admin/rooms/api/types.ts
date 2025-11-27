@@ -48,3 +48,7 @@ export interface RoomCapacity {
 	children: number;
 	total: number;
 }
+
+export interface RoomsQueryParams {
+	search: string;
+}
