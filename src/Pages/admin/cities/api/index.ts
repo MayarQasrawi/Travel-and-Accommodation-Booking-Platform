@@ -1,25 +1,29 @@
 import axiosInstance from "@/services/axios";
-import type { CitiesQueryParams, City, CreateCityData, UpdateCityData } from "./types";
+import type { City, CreateCityData, UpdateCityData } from "./types";
 
 export const citiesApi = {
-	getCities: (params?: CitiesQueryParams) => {
+	getCities: async (params?: { search?: string }) => {
 		const queryParams = new URLSearchParams();
-		if (params?.name) queryParams.append("name", params.name);
-
-		const queryString = queryParams.toString();
-		return axiosInstance.get<City[]>(`/cities${queryString ? `?${queryString}` : ""}`);
+		if (params?.search) {
+			queryParams.append("searchQuery", params.search);
+		}
+		const response = await axiosInstance.get(`/cities?${queryParams.toString()}`);
+		return response.data;
 	},
 
-	createCity: (data: CreateCityData) => {
-		return axiosInstance.post<City>("/cities", data);
+	createCity: async (data: CreateCityData) => {
+		const response = await axiosInstance.post<City>("/cities", data);
+		return response.data;
 	},
 
-	updateCity: (data: UpdateCityData) => {
-		return axiosInstance.put<City>(`/cities/${data.id}`, data);
+	updateCity: async (data: UpdateCityData) => {
+		const response = await axiosInstance.put<City>(`/cities/${data.id}`, data);
+		return response.data;
 	},
 
-	deleteCity: (cityId: number) => {
-		return axiosInstance.delete<void>(`/cities/${cityId}`);
+	deleteCity: async (cityId: number) => {
+		const response = await axiosInstance.delete<void>(`/cities/${cityId}`);
+		return response.data;
 	},
 };
 

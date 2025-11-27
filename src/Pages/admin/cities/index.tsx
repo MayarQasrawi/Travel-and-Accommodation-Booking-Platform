@@ -6,10 +6,14 @@ import { useCitiesQuery } from "./hooks/useCitiesQuery";
 import { useDeleteCityMutation } from "./hooks/useDeleteCityMutation";
 
 function CitiesPage() {
-	const { data, isLoading } = useCitiesQuery();
-	const cities = data?.data || [];
 	const store = useCityStore();
+	const { data, isLoading } = useCitiesQuery({ search: store.searchQuery });
+	const cities = data?.data || [];
 	const deleteMutation = useDeleteCityMutation();
+
+	const handleSearch = (query: string) => {
+		store.setSearchQuery(query);
+	};
 
 	return (
 		<CrudPage
@@ -22,6 +26,8 @@ function CitiesPage() {
 			onDelete={async (city) => {
 				await deleteMutation.mutateAsync(city.id);
 			}}
+			onSearch={handleSearch}
+			searchPlaceholder="Search cities by name..."
 		/>
 	);
 }

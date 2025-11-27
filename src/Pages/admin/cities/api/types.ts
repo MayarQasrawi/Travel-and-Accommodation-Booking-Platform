@@ -1,5 +1,5 @@
 export interface CitiesQueryParams {
-	name?: string;
+	search?: string;
 }
 
 export interface CreateCityData {
