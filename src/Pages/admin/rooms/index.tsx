@@ -18,7 +18,7 @@ function RoomsPage() {
 			form={<RoomFormSheet open={store.formOpen} onOpenChange={store.closeForm} room={store.selected} />}
 			store={useRoomStore}
 			onDelete={async (room) => {
-				await deleteMutation.mutateAsync(room.id);
+				await deleteMutation.mutateAsync(room.roomId);
 			}}
 		/>
 	);

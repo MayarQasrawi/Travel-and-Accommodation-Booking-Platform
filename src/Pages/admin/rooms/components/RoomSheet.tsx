@@ -16,10 +16,22 @@ export function RoomFormSheet({ open, onOpenChange, room }: RoomFormSheetProps) 
 	const updateMutation = useUpdateRoomMutation();
 
 	const handleSubmit = (values: RoomFormValues, helpers: FormikHelpers<RoomFormValues>) => {
+		const parsedValues = {
+			...values,
+			roomNumber: Number(values.roomNumber),
+			capacityOfAdults: Number(values.capacityOfAdults),
+			capacityOfChildren: Number(values.capacityOfChildren),
+			price: Number(values.price),
+		};
+
 		if (room) {
-			updateMutation.mutate({ ...values, id: room.id });
+			updateMutation.mutate({ ...parsedValues, roomId: room.roomId });
 		} else {
-			createMutation.mutate(values);
+			createMutation.mutate({
+				...parsedValues,
+				roomPhotoUrl: "",
+				roomType: "Standard Room",
+			});
 		}
 		onOpenChange(false);
 		helpers.resetForm();
@@ -30,6 +42,7 @@ export function RoomFormSheet({ open, onOpenChange, room }: RoomFormSheetProps) 
 		capacityOfAdults: room?.capacityOfAdults || 1,
 		capacityOfChildren: room?.capacityOfChildren || 0,
 		availability: room?.availability ?? true,
+		price: room?.price || 0,
 	};
 
 	return (
