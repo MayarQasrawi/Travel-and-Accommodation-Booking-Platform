@@ -8,7 +8,7 @@ export interface CreateCityData {
 }
 
 export interface UpdateCityData extends CreateCityData {
-	id: string;
+	id: number;
 }
 
 export interface City {

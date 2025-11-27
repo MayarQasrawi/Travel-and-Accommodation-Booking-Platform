@@ -33,7 +33,7 @@ export function CityForm({ initialValues, onSubmit, onCancel }: CityFormProps) {
 					<FormFooter
 						onCancel={onCancel}
 						isSubmitting={isSubmitting}
-						submitLabel={initialValues ? "Update City" : "Create City"}
+						submitLabel={initialValues?.id ? "Update City" : "Create City"}
 					/>
 				</form>
 			)}
