@@ -83,7 +83,7 @@ export function RoomForm({ initialValues, onSubmit, onCancel }: RoomFormProps) {
 					<FormFooter
 						onCancel={onCancel}
 						isSubmitting={isSubmitting}
-						submitLabel={initialValues ? "Update Room" : "Create Room"}
+						submitLabel={initialValues?.roomNumber ? "Update Room" : "Create Room"}
 					/>
 				</form>
 			)}

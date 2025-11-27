@@ -34,7 +34,7 @@ export interface CreateRoomData {
 	capacityOfAdults: number;
 	capacityOfChildren: number;
 	amenities?: RoomAmenity[];
-	price: number;
+	price?: number;
 	availability: boolean;
 	hotelId?: number;
 }
