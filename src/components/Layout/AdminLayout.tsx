@@ -14,15 +14,7 @@ function AdminLayout() {
 			<div className="flex w-screen h-screen">
 				<Sidebar />
 				<div className="flex-1 flex flex-col">
-					<Header />
-					<main className="flex-1 overflow-y-auto p-4">
-						<div className="space-y-6 p-6">
-							<div className="flex items-center justify-between">
-								<Title section={currentSection} description={`Manage ${currentSection} for your travel platform`} />
-							</div>
-							<Outlet />
-						</div>
-					</main>
+					<Outlet />
 				</div>
 			</div>
 		</SidebarProvider>
