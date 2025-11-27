@@ -1,16 +1,15 @@
-"use client";
 import { Formik, type FormikHelpers } from "formik";
 import FormFooter from "@/components/Form/FormFooter";
 import FormikInput from "@/components/Form/FormikTextInput";
-import { useCitiesQuery } from "@/Pages/admin/cities/hooks/useCitiesQuery";
+// import { useCitiesQuery } from "@/Pages/admin/cities/hooks/useCitiesQuery";
 import type { Hotel } from "../api/types";
 import { hotelFormSchema } from "./hotelFormSchema";
 
 // import FormikSelect from "@/components/Form/FormikSelect";
 
 export interface HotelFormValues {
-	name: string;
-	cityId: string;
+	hotelName: string;
+	// cityId: string;
 	location: string;
 	starRating: number;
 }
@@ -25,8 +24,8 @@ export function HotelForm({ initialValues, onSubmit, onCancel }: HotelFormProps)
 	// const { data: cities = [], isLoading: citiesLoading } = useCitiesQuery();
 
 	const defaultValues: HotelFormValues = {
-		name: initialValues?.name || "",
-		cityId: initialValues?.cityId || "",
+		hotelName: initialValues?.hotelName || "",
+		// cityId: initialValues?.cityId || "",
 		location: initialValues?.location || "",
 		starRating: initialValues?.starRating || 3,
 	};
@@ -39,7 +38,7 @@ export function HotelForm({ initialValues, onSubmit, onCancel }: HotelFormProps)
 				// , setFieldValue, values
 			}) => (
 				<form className="space-y-6" onSubmit={handleSubmit}>
-					<FormikInput label="Hotel Name" name="name" placeholder="Enter hotel name" />
+					<FormikInput label="Hotel Name" name="hotelName" placeholder="Enter hotel name" />
 
 					{/* <FormikSelect
             label="City"

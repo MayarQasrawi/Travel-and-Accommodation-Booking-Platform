@@ -1,11 +1,11 @@
 import * as Yup from "yup";
 
 export const hotelFormSchema = Yup.object().shape({
-	name: Yup.string()
+	hotelName: Yup.string()
 		.required("Hotel name is required")
 		.min(2, "Hotel name must be at least 2 characters")
 		.max(100, "Hotel name must not exceed 100 characters"),
-	cityId: Yup.string().required("City is required"),
+	// cityId: Yup.string().required("City is required"),
 	location: Yup.string()
 		.required("Location is required")
 		.min(5, "Location must be at least 5 characters")

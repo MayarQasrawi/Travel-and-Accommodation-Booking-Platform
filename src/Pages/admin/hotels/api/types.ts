@@ -4,15 +4,14 @@ export interface HotelsQueryParams {
 }
 
 export interface CreateHotelData {
-	name: string;
-	cityId: string;
-	owner: string;
+	hotelName: string;
+	// cityId: string;
 	location: string;
 	starRating: number;
 }
 
 export interface UpdateHotelData extends CreateHotelData {
-	id: string;
+	id: number;
 }
 
 export interface Room {
