@@ -1,14 +1,15 @@
 import { Search } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import BaseInput from "../inputs/BaseInput";
+import SearchInput from "./SearchInput";
 
 interface SearchBarProps {
 	placeholder?: string;
 	onSearch: (query: string) => void;
+	className?: string;
 }
 
-export default function SearchBar({ placeholder = "Search...", onSearch }: SearchBarProps) {
+export default function SearchBar({ placeholder = "Search...", onSearch, className }: SearchBarProps) {
 	const [query, setQuery] = useState("");
 
 	const handleSubmit = () => {
@@ -16,17 +17,8 @@ export default function SearchBar({ placeholder = "Search...", onSearch }: Searc
 	};
 
 	return (
-		<div className="flex gap-2">
-			<BaseInput
-				type="search"
-				placeholder={placeholder}
-				value={query}
-				onChange={setQuery}
-				className="md:w-xl"
-				onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-					if (e.key === "Enter") handleSubmit();
-				}}
-			/>
+		<div className={`flex gap-2 ${className}`}>
+			<SearchInput value={query} placeholder={placeholder} onChange={setQuery} onEnter={handleSubmit} />
 
 			<Button onClick={handleSubmit} className="flex items-center gap-2">
 				<Search className="h-4 w-4" />
