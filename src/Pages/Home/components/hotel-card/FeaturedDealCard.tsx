@@ -1,4 +1,4 @@
-import type { Hotel } from "@/Pages/admin/hotels/api/types";
+import type { FeaturedDeal } from "../../hooks/useFeaturedDeals";
 import {
 	HotelBadge,
 	HotelCard,
@@ -13,26 +13,34 @@ import {
 } from ".";
 
 interface FeaturedDealCardProps {
-	hotel: Hotel;
+	hotel: FeaturedDeal;
 }
 
-export const FeaturedDealCard: React.FC<FeaturedDealCardProps> = ({ hotel }) => (
-	<HotelCard key={hotel.id}>
-		<div className="relative">
-			<HotelCardImage src={hotel.image} alt={hotel.name} />
-			<HotelBadge>{hotel.discount}</HotelBadge>
-		</div>
+export const FeaturedDealCard: React.FC<FeaturedDealCardProps> = ({ hotel }) => {
+	const discountPercentage = Math.round(((hotel.originalRoomPrice - hotel.finalPrice) / hotel.originalRoomPrice) * 100);
 
-		<HotelCardContent>
-			<HotelCardTitle>{hotel.name}</HotelCardTitle>
-			<HotelCardLocation>{hotel.location}</HotelCardLocation>
-			<HotelCardRating rating={hotel.starRating} />
+	return (
+		<HotelCard key={hotel.hotelId}>
+			<div className="relative">
+				<HotelCardImage src={hotel.roomPhotoUrl} alt={hotel.hotelName} />
+				{discountPercentage > 0 && (
+					<HotelBadge variant="destructive" className="bg-gold">
+						{discountPercentage}% OFF
+					</HotelBadge>
+				)}
+			</div>
 
-			<HotelPrice>
-				<HotelOriginalPrice>{hotel.originalPrice}</HotelOriginalPrice>
-				<HotelDiscountedPrice>{hotel.discountedPrice}</HotelDiscountedPrice>
-				<span className="text-xs text-muted-foreground">/ night</span>
-			</HotelPrice>
-		</HotelCardContent>
-	</HotelCard>
-);
+			<HotelCardContent>
+				<HotelCardTitle>{hotel.hotelName}</HotelCardTitle>
+				<HotelCardLocation>{hotel.cityName}</HotelCardLocation>
+				<HotelCardRating rating={hotel.hotelStarRating} />
+
+				<HotelPrice>
+					<HotelOriginalPrice>{hotel.originalRoomPrice}</HotelOriginalPrice>
+					<HotelDiscountedPrice>{hotel.finalPrice}</HotelDiscountedPrice>
+					<span className="text-xs text-muted-foreground">/ night</span>
+				</HotelPrice>
+			</HotelCardContent>
+		</HotelCard>
+	);
+};
