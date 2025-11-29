@@ -1,5 +1,5 @@
 import type { TrendingDestination } from "@/Pages/Home/hooks/useTrendingDestinations";
-import { HotelCard, HotelCardContent, HotelCardImage, HotelCardLocation } from "./index";
+import { HotelCard, HotelCardImage, HotelCardLocation } from "./index";
 
 interface TrendingDestinationCardProps {
 	hotel: TrendingDestination;

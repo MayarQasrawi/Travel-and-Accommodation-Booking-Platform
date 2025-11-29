@@ -7,8 +7,6 @@ import { HotelSection } from "./HotelSection";
 export const TrendingDestinationsSection: React.FC = () => {
 	const { data: destinations, isLoading } = useTrendingDestinations();
 
-	if (isLoading) return <div>Loading...</div>;
-
 	return (
 		<HotelSection<TrendingDestination>
 			badgeIcon={<MapPin className="w-4 h-4" />}
