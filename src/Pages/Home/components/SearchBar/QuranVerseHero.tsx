@@ -18,7 +18,7 @@ const QuranVerseHero = ({
 			<h1 className="text-5xl md:text-6xl font-bold mb-4">
 				{mainTitle}
 				<p className="mt-2">
-					<span className=" text-gold">{highlightedTitle}</span>
+					<span className=" text-primary">{highlightedTitle}</span>
 				</p>
 			</h1>
 
