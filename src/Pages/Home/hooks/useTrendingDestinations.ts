@@ -7,6 +7,7 @@ export interface TrendingDestination {
 	countryName: string;
 	description: string;
 	thumbnailUrl: string;
+	hotelId?: number;
 }
 
 export function useTrendingDestinations() {

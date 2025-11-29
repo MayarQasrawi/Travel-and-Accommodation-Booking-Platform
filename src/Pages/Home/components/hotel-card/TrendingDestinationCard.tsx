@@ -24,14 +24,6 @@ export const TrendingDestinationCard: React.FC<TrendingDestinationCardProps> = (
 					<HotelCardLocation className="text-primary-foreground">{hotel.countryName}</HotelCardLocation>
 				</div>
 			</div>
-
-			{/* <HotelCardContent>
-        <div className="space-y-3">
-          <p className="text-sm text-muted-foreground line-clamp-2">
-            {hotel.description}
-          </p>
-        </div>
-      </HotelCardContent> */}
 		</HotelCard>
 	);
 };
