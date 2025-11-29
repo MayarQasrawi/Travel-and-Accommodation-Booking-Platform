@@ -5,3 +5,4 @@ export const APP_NAME = "Travio";
 
 // Correct type
 export const LOGO = MapPinned;
+export const CURRENCY = "$";
