@@ -1,15 +1,13 @@
-import { Star } from "lucide-react";
-import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { BrushCleaning, Star } from "lucide-react";
+import { nanoid } from "nanoid";
+import type React from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
-
-interface Amenity {
-	id: number;
-	name: string;
-	description: string;
-}
+import { CURRENCY } from "@/constants/storage";
+import { type Amenity, useAmenities } from "@/Pages/SearchResultsPage/hooks/useAmenities";
 
 interface Filters {
 	priceRange: [number, number];
@@ -23,81 +21,86 @@ interface FiltersProps {
 }
 
 export default function FiltersSidebar({ filters, setFilters }: FiltersProps) {
-	const mockAmenities: Amenity[] = [
-		{ id: 1, name: "Free Wi-Fi", description: "" },
-		{ id: 2, name: "Air Conditioning", description: "" },
-		{ id: 3, name: "Mini Bar", description: "" },
-		{ id: 4, name: "Flat-Screen TV", description: "" },
-		{ id: 5, name: "Coffee Maker", description: "" },
-		{ id: 6, name: "Safe", description: "" },
-		{ id: 7, name: "Complimentary Toiletries", description: "" },
-		{ id: 8, name: "Bathtub", description: "" },
-		{ id: 9, name: "Desk and Chair", description: "" },
-		{ id: 10, name: "Slippers", description: "" },
-	];
-
-	const [amenities] = useState<Amenity[]>(mockAmenities);
+	const { data: amenities = [] } = useAmenities();
 
 	const handleStarChange = (star: number, checked: boolean) => {
-		setFilters((prev) => ({
+		setFilters((prev: Filters) => ({
 			...prev,
 			starRating: checked ? [...prev.starRating, star] : prev.starRating.filter((s) => s !== star),
 		}));
 	};
 
 	const handleAmenityChange = (id: number, checked: boolean) => {
-		setFilters((prev) => ({
+		setFilters((prev: Filters) => ({
 			...prev,
 			amenities: checked ? [...prev.amenities, id] : prev.amenities.filter((a) => a !== id),
 		}));
 	};
 
-	return (
-		<div className="space-y-6">
-			{/* Price Range */}
-			<Card>
-				<CardHeader>
-					<CardTitle className="text-lg">Price Range</CardTitle>
-				</CardHeader>
-				<CardContent>
-					<div className="space-y-4">
-						<Slider
-							value={filters.priceRange}
-							min={0}
-							max={1000}
-							step={10}
-							onValueChange={(val) =>
-								setFilters((prev) => ({
-									...prev,
-									priceRange: val as [number, number],
-								}))
-							}
-						/>
-						<div className="flex justify-between text-sm text-muted-foreground">
-							<span>${filters.priceRange[0]}</span>
-							<span>${filters.priceRange[1]}</span>
-						</div>
-					</div>
-				</CardContent>
-			</Card>
+	const handlePriceChange = (val: [number, number]) => {
+		setFilters((prev: Filters) => ({
+			...prev,
+			priceRange: val,
+		}));
+	};
 
-			{/* Star Rating */}
-			<Card>
-				<CardHeader>
-					<CardTitle className="text-lg">Star Rating</CardTitle>
-				</CardHeader>
-				<CardContent>
-					<div className="space-y-3">
+	const handleClearFilters = () => {
+		setFilters({
+			priceRange: [0, 1000],
+			starRating: [],
+			amenities: [],
+		});
+	};
+
+	return (
+		<Card className="p-4 bg-muted/40 max-w-[320px] max-h-screen overflow-y-auto space-y-2 rounded-lg">
+			<CardHeader>
+				<CardTitle className="text-xl font-extrabold">Filters</CardTitle>
+				<CardAction>
+					<Button className="hover:scale-110" variant="ghost" onClick={handleClearFilters} title="Clear Filters">
+						<BrushCleaning size={20} />
+					</Button>
+				</CardAction>
+			</CardHeader>
+
+			<CardContent className="space-y-8">
+				{/* Price Range */}
+				<div className="space-y-2">
+					<h2 className="text-sm font-bold text-muted-foreground">Price Range</h2>
+					<Slider
+						value={filters.priceRange}
+						min={0}
+						max={1000}
+						step={10}
+						onValueChange={(val) => handlePriceChange(val as [number, number])}
+					/>
+					<div className="flex justify-between text-sm text-muted-foreground font-medium">
+						<span>
+							{CURRENCY}
+							{filters.priceRange[0]}
+						</span>
+						<span>
+							{CURRENCY}
+							{filters.priceRange[1]}
+						</span>
+					</div>
+				</div>
+
+				{/* Star Rating */}
+				<div className="space-y-2">
+					<h2 className="text-sm font-bold text-muted-foreground">Star Rating</h2>
+					<div className="space-y-2">
 						{[5, 4, 3, 2, 1].map((star) => (
-							<div key={star} className="flex items-center gap-2">
+							<div key={`rating-${star}`} className="flex items-center gap-2">
 								<Checkbox
 									checked={filters.starRating.includes(star)}
 									onCheckedChange={(checked) => handleStarChange(star, Boolean(checked))}
+									className="border-2"
 								/>
 								<Label className="flex items-center gap-1 cursor-pointer">
 									<div className="flex">
 										{Array.from({ length: star }).map(() => (
-											<Star key={`star-${star}`} className="w-4 h-4 text-primary fill-primary" />
+											<Star key={nanoid()} className="w-4 h-4 text-gold fill-gold" />
 										))}
 									</div>
 									<span className="text-sm text-muted-foreground">& up</span>
@@ -105,19 +108,16 @@ export default function FiltersSidebar({ filters, setFilters }: FiltersProps) {
 							</div>
 						))}
 					</div>
-				</CardContent>
-			</Card>
+				</div>
 
-			{/* Amenities */}
-			<Card>
-				<CardHeader>
-					<CardTitle className="text-lg">Amenities</CardTitle>
-				</CardHeader>
-				<CardContent>
-					<div className="space-y-3 max-h-60 overflow-y-auto">
-						{amenities.map((amenity) => (
-							<div key={amenity.id} className="flex items-center gap-2">
+				{/* Amenities */}
+				<div className="space-y-2">
+					<h2 className="text-sm font-bold text-muted-foreground">Amenities</h2>
+					<div className="flex flex-wrap max-h-56 overflow-y-auto gap-2">
+						{amenities.map((amenity: Amenity) => (
+							<div key={amenity.id} className="flex items-center gap-1">
 								<Checkbox
+									className="border-2"
 									checked={filters.amenities.includes(amenity.id)}
 									onCheckedChange={(checked) => handleAmenityChange(amenity.id, Boolean(checked))}
 								/>
@@ -125,8 +125,8 @@ export default function FiltersSidebar({ filters, setFilters }: FiltersProps) {
 							</div>
 						))}
 					</div>
-				</CardContent>
-			</Card>
-		</div>
+				</div>
+			</CardContent>
+		</Card>
 	);
 }
