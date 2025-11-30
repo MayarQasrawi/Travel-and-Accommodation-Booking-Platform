@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useSearchHotels } from "@/Pages/Home/hooks/useSearchHotels";
 import { FeaturedDealCard } from "../Home/components/hotel-card/FeaturedDealCard";
-import FiltersSidebar from "./FiltersSidebar";
+import FiltersSidebar from "./components/FilterSidebar/FiltersSidebar";
 
 export default function SearchResultsPage() {
 	const location = useLocation();
@@ -16,7 +16,7 @@ export default function SearchResultsPage() {
 
 	const {
 		data: hotels,
-		refetch,
+		// refetch,
 		isLoading,
 	} = useSearchHotels({
 		city: initialForm.query,
