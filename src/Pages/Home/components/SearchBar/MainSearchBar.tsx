@@ -1,5 +1,6 @@
 import { Search as SearchIcon, Users } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import SearchInput from "@/components/common/SearchInput";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -24,6 +25,7 @@ export default function MainSearchBar() {
 		children: 0,
 		rooms: 1,
 	});
+	const navigate = useNavigate();
 
 	const counters = [
 		{ label: "Adults", description: "Ages 13+", key: "adults", min: 1 },
@@ -37,7 +39,7 @@ export default function MainSearchBar() {
 	];
 
 	const handleSearch = () => {
-		console.log("Search submitted:", form);
+		navigate("/search-results", { state: { ...form } });
 	};
 
 	return (
@@ -54,7 +56,6 @@ export default function MainSearchBar() {
 						Where are you going?
 					</label>
 					<SearchInput
-						id="location-search"
 						placeholder="Search for hotels, cities..."
 						value={form.query}
 						onChange={(query) => setForm({ ...form, query })}
