@@ -9,6 +9,9 @@
 		"enabled": true,
 		"rules": {
 			"recommended": true,
+			"suspicious": {
+				"noArrayIndexKey": "off"
+			},
 			"correctness": {
 				"noUnusedImports": {
 					"level": "error",
