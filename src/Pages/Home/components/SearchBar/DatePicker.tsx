@@ -14,7 +14,7 @@ interface DatePickerProps {
 export function DatePicker({ label, date, onChange }: DatePickerProps) {
 	return (
 		<div>
-			<label htmlFor={`datepicker-${label}`} className="text-sm font-bold text-foreground mb-2 block">
+			<label htmlFor={`datepicker-${label}`} className="text-sm font-medium text-foreground mb-2 block">
 				{label}
 			</label>{" "}
 			<Popover>
@@ -29,7 +29,7 @@ export function DatePicker({ label, date, onChange }: DatePickerProps) {
 					</Button>
 				</PopoverTrigger>
 				<PopoverContent className="w-auto p-0" align="start">
-					<Calendar mode="single" selected={date} onSelect={(d) => d && onChange(d)} initialFocus />
+					<Calendar mode="single" selected={date} onSelect={(d) => d && onChange(d)} />
 				</PopoverContent>
 			</Popover>
 		</div>
