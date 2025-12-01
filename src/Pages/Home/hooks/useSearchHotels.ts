@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { da } from "date-fns/locale";
+import type { Amenity } from "@/Pages/SearchResultsPage/hooks/useAmenities";
 import axiosInstance from "@/services/axios";
 
 export interface SearchParams {
@@ -12,16 +12,21 @@ export interface SearchParams {
 }
 export interface SearchResult {
 	hotelId: number;
-	cityName: string;
 	hotelName: string;
-	hotelStarRating: number;
-	originalRoomPrice: number;
-	finalPrice: number;
-	discount: number;
-	numberOfAdults: number;
-	numberOfChildren: number;
-	numberOfRooms: number;
+	starRating: number;
+	latitude: number;
+	longitude: number;
+	roomPrice: number;
+	roomType: string;
+	cityName: string;
 	roomPhotoUrl: string;
+	discount: number;
+	amenities: Amenity;
+	numberOfChildren: number;
+	numberOfAdults: number;
+	numberOfRooms: number;
+	checkInDate: string;
+	checkOutDate: string;
 }
 
 export function useSearchHotels(params: SearchParams) {
