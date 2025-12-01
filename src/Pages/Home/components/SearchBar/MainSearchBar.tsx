@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import SearchInput from "@/components/common/SearchInput";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 import { CounterControl } from "./CounterControl";
 import { DatePicker } from "./DatePicker";
 
@@ -16,15 +17,22 @@ interface SearchForm {
 	rooms: number;
 }
 
-export default function MainSearchBar() {
-	const [form, setForm] = useState<SearchForm>({
-		query: "",
-		checkIn: new Date(),
-		checkOut: new Date(Date.now() + 86400000),
-		adults: 2,
-		children: 0,
-		rooms: 1,
-	});
+export const FORM = {
+	query: "",
+	checkIn: new Date(),
+	checkOut: new Date(Date.now() + 86400000),
+	adults: 2,
+	children: 0,
+	rooms: 1,
+};
+
+interface MainSearchBarProps {
+	onSearch?: (form: SearchForm) => void;
+	className?: string;
+}
+
+export default function MainSearchBar({ onSearch, className = " max-w-6xl mx-auto" }: MainSearchBarProps) {
+	const [form, setForm] = useState<SearchForm>(FORM);
 	const navigate = useNavigate();
 
 	const counters = [
@@ -39,12 +47,16 @@ export default function MainSearchBar() {
 	];
 
 	const handleSearch = () => {
-		navigate("/search-results", { state: { ...form } });
+		if (onSearch) {
+			onSearch(form);
+		} else {
+			navigate("/search-results", { state: { ...form } });
+		}
 	};
 
 	return (
 		<form
-			className="bg-card rounded-xl shadow-lg border border-border p-6 space-y-6 w-full max-w-6xl mx-auto"
+			className={cn("bg-card rounded shadow-lg border border-border p-6 space-y-6 w-full", className)}
 			onSubmit={(e) => {
 				e.preventDefault();
 				handleSearch();
@@ -83,7 +95,8 @@ export default function MainSearchBar() {
 						<PopoverTrigger asChild>
 							<Button variant="outline" className="w-full justify-start" id="guests-rooms-trigger">
 								<Users className="mr-2 h-4 w-4" />
-								{form.adults + form.children} Guests, {form.rooms} Room{form.rooms > 1 ? "s" : ""}
+								{form.adults + form.children} Guests, {form.rooms} Room
+								{form.rooms > 1 ? "s" : ""}
 							</Button>
 						</PopoverTrigger>
 						<PopoverContent className="w-80" align="end">
