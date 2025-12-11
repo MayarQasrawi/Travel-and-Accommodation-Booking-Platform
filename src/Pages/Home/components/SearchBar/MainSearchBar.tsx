@@ -5,10 +5,11 @@ import SearchInput from "@/components/common/SearchInput";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
+import { navigateWithSearchParams } from "@/utils/searchQuery";
 import { CounterControl } from "./CounterControl";
 import { DatePicker } from "./DatePicker";
 
-interface SearchForm {
+export interface SearchForm {
 	query: string;
 	checkIn: Date;
 	checkOut: Date;
@@ -47,11 +48,8 @@ export default function MainSearchBar({ onSearch, className = " max-w-6xl mx-aut
 	];
 
 	const handleSearch = () => {
-		if (onSearch) {
-			onSearch(form);
-		} else {
-			navigate("/search-results", { state: { ...form } });
-		}
+		navigateWithSearchParams(form, navigate);
+		onSearch?.(form);
 	};
 
 	return (

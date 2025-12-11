@@ -6,7 +6,7 @@ export interface RecentlyVisitedHotel {
 	hotelId: number;
 	hotelName: string;
 	starRating: number;
-	visitDate: string; // ISO string
+	visitDate: string;
 	cityName: string;
 	thumbnailUrl: string;
 	priceLowerBound: number;

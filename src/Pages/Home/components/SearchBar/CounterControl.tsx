@@ -8,10 +8,11 @@ interface CounterControlProps {
 	description: string;
 	value: number;
 	min?: number;
+	max?: number;
 	onChange: (val: number) => void;
 }
 
-export function CounterControl({ label, description, value, min = 0, onChange }: CounterControlProps) {
+export function CounterControl({ label, description, value, min = 0, onChange, max = 10 }: CounterControlProps) {
 	return (
 		<div className="flex items-center justify-between">
 			<div>
@@ -25,6 +26,7 @@ export function CounterControl({ label, description, value, min = 0, onChange }:
 					className="h-8 w-8 bg-transparent"
 					onClick={() => onChange(Math.max(min, value - 1))}
 					aria-label={`Decrease ${label}`}
+					disabled={value <= min}
 				>
 					<Minus className="h-4 w-4" />
 				</Button>
@@ -35,6 +37,7 @@ export function CounterControl({ label, description, value, min = 0, onChange }:
 					className="h-8 w-8 bg-transparent"
 					onClick={() => onChange(value + 1)}
 					aria-label={`Increase ${label}`}
+					disabled={value >= max}
 				>
 					<Plus className="h-4 w-4" />
 				</Button>
