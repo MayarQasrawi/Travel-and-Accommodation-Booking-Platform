@@ -1,31 +1,30 @@
-import type { SearchForm } from "@/Pages/Home/components/SearchBar/MainSearchBar";
 import { FORM } from "@/Pages/Home/components/SearchBar/MainSearchBar";
+import type { SearchParams } from "@/Pages/Home/hooks/useSearchHotels";
 
-export function parseSearchParams(params: URLSearchParams): SearchForm {
+export function parseSearchParams(params: URLSearchParams): SearchParams {
 	return {
-		query: params.get("query") || "",
-		checkIn: params.get("checkIn") ? new Date(params.get("checkIn")!) : FORM.checkIn,
-
-		checkOut: params.get("checkOut") ? new Date(params.get("checkOut")!) : FORM.checkOut,
+		city: params.get("city") || "",
+		checkInDate: params.get("checkInDate") ? new Date(params.get("checkInDate")!) : FORM.checkInDate,
+		checkOutDate: params.get("checkOutDate") ? new Date(params.get("checkOutDate")!) : FORM.checkOutDate,
 
 		adults: Number(params.get("adults") || FORM.adults),
 		children: Number(params.get("children") || FORM.children),
-		rooms: Number(params.get("rooms") || FORM.rooms),
+		numberOfRooms: Number(params.get("numberOfRooms") || FORM.numberOfRooms),
 	};
 }
 
-export const buildSearchQuery = (form: SearchForm) => {
-	return new URLSearchParams({
-		query: form.query,
-		checkIn: form.checkIn.toISOString(),
-		checkOut: form.checkOut.toISOString(),
-		adults: String(form.adults),
-		children: String(form.children),
-		rooms: String(form.rooms),
-	}).toString();
+export const buildSearchQuery = (form: SearchParams) => {
+	const params = new URLSearchParams();
+	if (form.city) params.set("city", form.city);
+	if (form.checkInDate) params.set("checkInDate", form.checkInDate.toISOString());
+	if (form.checkOutDate) params.set("checkOutDate", form.checkOutDate.toISOString());
+	if (form.adults !== undefined) params.set("adults", String(form.adults));
+	if (form.children !== undefined) params.set("children", String(form.children));
+	if (form.numberOfRooms !== undefined) params.set("numberOfRooms", String(form.numberOfRooms));
+	return params.toString();
 };
 
-export const navigateWithSearchParams = (form: SearchForm, navigate: any) => {
+export const navigateWithSearchParams = (form: SearchParams, navigate: any) => {
 	const qs = buildSearchQuery(form);
-	navigate(`/search-results?${qs}`, { replace: true });
+	navigate(`/search-results?${qs}`);
 };

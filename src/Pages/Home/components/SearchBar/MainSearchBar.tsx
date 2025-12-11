@@ -1,50 +1,56 @@
 import { Search as SearchIcon, Users } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SearchInput from "@/components/common/SearchInput";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
+import type { SearchParams } from "@/Pages/Home/hooks/useSearchHotels";
 import { navigateWithSearchParams } from "@/utils/searchQuery";
 import { CounterControl } from "./CounterControl";
 import { DatePicker } from "./DatePicker";
 
-export interface SearchForm {
-	query: string;
-	checkIn: Date;
-	checkOut: Date;
-	adults: number;
-	children: number;
-	rooms: number;
-}
-
 export const FORM = {
-	query: "",
-	checkIn: new Date(),
-	checkOut: new Date(Date.now() + 86400000),
+	city: "",
+	checkInDate: new Date(),
+	checkOutDate: new Date(Date.now() + 86400000),
 	adults: 2,
 	children: 0,
-	rooms: 1,
+	numberOfRooms: 1,
 };
 
 interface MainSearchBarProps {
-	onSearch?: (form: SearchForm) => void;
+	onSearch?: (form: SearchParams) => void;
 	className?: string;
+	initialValues?: SearchParams;
 }
 
-export default function MainSearchBar({ onSearch, className = " max-w-6xl mx-auto" }: MainSearchBarProps) {
-	const [form, setForm] = useState<SearchForm>(FORM);
+export default function MainSearchBar({
+	onSearch,
+	className = " max-w-6xl mx-auto",
+	initialValues,
+}: MainSearchBarProps) {
+	const [form, setForm] = useState<SearchParams>(initialValues || FORM);
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (initialValues) setForm(initialValues);
+	}, [initialValues]);
 
 	const counters = [
 		{ label: "Adults", description: "Ages 13+", key: "adults", min: 1 },
 		{ label: "Children", description: "Ages 0-12", key: "children", min: 0 },
-		{ label: "Rooms", description: "Number of rooms", key: "rooms", min: 1 },
+		{
+			label: "Rooms",
+			description: "Number of rooms",
+			key: "numberOfRooms",
+			min: 1,
+		},
 	] as const;
 
 	const datePickers = [
-		{ label: "Check-in", key: "checkIn" as const },
-		{ label: "Check-out", key: "checkOut" as const },
+		{ label: "Check-in", key: "checkInDate" as const },
+		{ label: "Check-out", key: "checkOutDate" as const },
 	];
 
 	const handleSearch = () => {
@@ -67,8 +73,8 @@ export default function MainSearchBar({ onSearch, className = " max-w-6xl mx-aut
 					</label>
 					<SearchInput
 						placeholder="Search for hotels, cities..."
-						value={form.query}
-						onChange={(query) => setForm({ ...form, query })}
+						value={form.city || ""}
+						onChange={(city) => setForm({ ...form, city })}
 						onEnter={handleSearch}
 						className="w-full"
 					/>
@@ -79,7 +85,7 @@ export default function MainSearchBar({ onSearch, className = " max-w-6xl mx-aut
 						<DatePicker
 							key={key}
 							label={label}
-							date={form[key]}
+							date={form[key] || FORM[key]}
 							onChange={(date) => setForm({ ...form, [key]: date })}
 						/>
 					))}
@@ -93,8 +99,9 @@ export default function MainSearchBar({ onSearch, className = " max-w-6xl mx-aut
 						<PopoverTrigger asChild>
 							<Button variant="outline" className="w-full justify-start" id="guests-rooms-trigger">
 								<Users className="mr-2 h-4 w-4" />
-								{form.adults + form.children} Guests, {form.rooms} Room
-								{form.rooms > 1 ? "s" : ""}
+								{(form.adults ?? FORM.adults) + (form.children ?? FORM.children)} Guests,{" "}
+								{form.numberOfRooms ?? FORM.numberOfRooms} Room
+								{(form.numberOfRooms ?? FORM.numberOfRooms) > 1 ? "s" : ""}
 							</Button>
 						</PopoverTrigger>
 						<PopoverContent className="w-80" align="end">
@@ -104,7 +111,7 @@ export default function MainSearchBar({ onSearch, className = " max-w-6xl mx-aut
 										key={key}
 										label={label}
 										description={description}
-										value={form[key]}
+										value={form[key] ?? FORM[key]}
 										min={min}
 										onChange={(val) => setForm({ ...form, [key]: val })}
 									/>
