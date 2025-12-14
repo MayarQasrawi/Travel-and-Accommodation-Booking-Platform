@@ -1,6 +1,7 @@
 import { Baby, Bed, Calendar, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { USER_ROUTES } from "@/constants/routes";
 
 interface HotelMetaInfoProps {
 	roomType: string;
@@ -9,7 +10,7 @@ interface HotelMetaInfoProps {
 	numberOfRooms: number;
 	checkInDate: string;
 	checkOutDate: string;
-	hotelId?: number;
+	hotelId: number;
 	onBookNow?: () => void;
 }
 
@@ -57,7 +58,7 @@ export const HotelMetaInfo: React.FC<HotelMetaInfoProps> = ({
 
 				{onBookNow && (
 					<Button onClick={onBookNow}>
-						<Link to={`/hotel/${hotelId}`}>View Details</Link>
+						<Link to={USER_ROUTES.hotelDetail(hotelId)}>View Details</Link>
 					</Button>
 				)}
 			</div>
