@@ -9,8 +9,8 @@ interface QuranVerseHeroProps {
 
 const QuranVerseHero = ({
 	className,
-	mainTitle = "Find Your Perfect",
-	highlightedTitle = "Stay",
+	mainTitle = "Travel Smarter with",
+	highlightedTitle = "Travio",
 	arabicVerse = "﴿ قُلْ سِيرُوا فِي الْأَرْضِ فَانظُرُوا كَيْفَ بَدَأَ الْخَلْقَ ﴾",
 }: QuranVerseHeroProps) => {
 	return (
