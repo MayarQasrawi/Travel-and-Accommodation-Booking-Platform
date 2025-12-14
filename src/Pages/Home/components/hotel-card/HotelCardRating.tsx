@@ -1,5 +1,5 @@
 import type React from "react";
-import { StarRating } from "@/components/admin/StarRating";
+import { StarRating } from "@/components/common/StarRating";
 
 interface Props {
 	rating: number;
