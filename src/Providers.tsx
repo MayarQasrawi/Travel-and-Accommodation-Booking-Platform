@@ -17,7 +17,7 @@ export const Providers = ({ children }: PropsWithChildren) => {
 		<QueryClientProvider client={queryClient}>
 			<AuthProvider>
 				{children}
-				<Toaster position="top-right" richColors />
+				<Toaster position="bottom-right" richColors />
 			</AuthProvider>
 			<ReactQueryDevtools initialIsOpen={false} />
 		</QueryClientProvider>

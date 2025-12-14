@@ -6,5 +6,6 @@ export * from "./HotelCardLocation";
 export * from "./HotelCardRating";
 export * from "./HotelCardTitle";
 export * from "./HotelDiscountedPrice";
+export * from "./HotelMetaInfo";
 export * from "./HotelOriginalPrice";
 export * from "./HotelPrice";

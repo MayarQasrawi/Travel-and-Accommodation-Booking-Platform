@@ -5,12 +5,19 @@ export const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
 			staleTime: 60_000,
-			retry: 1,
+			retry: (failureCount, error: any) => {
+				// Don't retry on 4xx errors
+				if (error?.code >= 400 && error?.code < 500) return false;
+				return failureCount < 2;
+			},
 			refetchOnWindowFocus: false,
 			refetchOnReconnect: true,
 		},
 		mutations: {
-			retry: 1,
+			retry: (failureCount, error: any) => {
+				if (error?.code >= 400 && error?.code < 500) return false;
+				return failureCount < 1;
+			},
 		},
 	},
 
@@ -27,7 +34,7 @@ export const queryClient = new QueryClient({
 			toast.error(error.message || "Mutation failed");
 		},
 		onSuccess: () => {
-			toast.success("Operation successful");
+			toast.success("Successful");
 		},
 	}),
 });
