@@ -5,7 +5,9 @@ import RoomsPage from "@/Pages/admin/rooms/index";
 import Home from "@/Pages/Home/index";
 import LoginPage from "@/Pages/Login/index";
 import AdminLayout from "./components/Layout/AdminLayout";
-import HotelPage from "./Pages/SearchResultsPage/SearchResultsPage";
+import UserLayout from "./components/Layout/UserLayout/UserLayout";
+import HotelPage from "./Pages/Hotel/HotelPage";
+import SearchResultsPage from "./Pages/SearchResultsPage/SearchResultsPage";
 
 const router = createBrowserRouter([
 	{
@@ -32,13 +34,24 @@ const router = createBrowserRouter([
 		],
 	},
 	{
-		path: "user",
-		element: <Home />,
+		path: "user/",
+		element: <UserLayout />,
+		children: [
+			{
+				element: <Home />,
+				index: true,
+			},
+			{
+				path: "search-results/",
+				element: <SearchResultsPage />,
+			},
+			{
+				path: "hotel/:hotelId",
+				element: <HotelPage />,
+			},
+		],
 	},
-	{
-		path: "search-results/",
-		element: <HotelPage />,
-	},
+
 	{
 		path: "*",
 		element: <div>not found</div>,
