@@ -1,3 +1,4 @@
+import { discountPercentage } from "@/utils/discountPercentage";
 import type { FeaturedDeal } from "../../hooks/useFeaturedDeals";
 import {
 	HotelBadge,
@@ -17,15 +18,18 @@ interface FeaturedDealCardProps {
 }
 
 export const FeaturedDealCard: React.FC<FeaturedDealCardProps> = ({ hotel }) => {
-	const discountPercentage = Math.round(((hotel.originalRoomPrice - hotel.finalPrice) / hotel.originalRoomPrice) * 100);
+	const percentage = discountPercentage({
+		originalPrice: hotel.originalRoomPrice,
+		finalPrice: hotel.finalPrice,
+	});
 
 	return (
 		<HotelCard key={hotel.hotelId}>
 			<div className="relative">
 				<HotelCardImage src={hotel.roomPhotoUrl} alt={hotel.hotelName} />
-				{discountPercentage > 0 && (
+				{percentage > 0 && (
 					<HotelBadge variant="destructive" className="bg-gold">
-						{discountPercentage}% OFF
+						{percentage}% OFF
 					</HotelBadge>
 				)}
 			</div>
