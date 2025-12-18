@@ -1,3 +1,4 @@
+import { ROUTES } from "@/constants/routes";
 import { FORM } from "@/Pages/Home/components/SearchBar/MainSearchBar";
 import type { SearchParams } from "@/Pages/Home/hooks/useSearchHotels";
 
@@ -26,5 +27,5 @@ export const buildSearchQuery = (form: SearchParams) => {
 
 export const navigateWithSearchParams = (form: SearchParams, navigate: any) => {
 	const qs = buildSearchQuery(form);
-	navigate(`/search-results?${qs}`);
+	navigate(`${ROUTES.USER.SEARCH_RESULTS}?${qs}`);
 };
