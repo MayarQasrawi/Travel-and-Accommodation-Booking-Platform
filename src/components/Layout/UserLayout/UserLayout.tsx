@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import Footer from "@/Pages/Home/components/sections/Footer";
+import Footer from "@/components/Layout/UserLayout/Footer";
 import Navbar from "./Navbar";
 
 function UserLayout() {
