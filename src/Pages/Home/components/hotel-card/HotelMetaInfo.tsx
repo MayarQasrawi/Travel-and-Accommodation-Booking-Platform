@@ -1,4 +1,4 @@
-import { Baby, Bed, Calendar, Users } from "lucide-react";
+import { Bed, Calendar, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { USER_ROUTES } from "@/constants/routes";
@@ -7,9 +7,11 @@ interface HotelMetaInfoProps {
 	roomType: string;
 	numberOfAdults: number;
 	numberOfChildren: number;
-	numberOfRooms: number;
-	checkInDate: string;
-	checkOutDate: string;
+
+	numberOfRooms?: number;
+	checkInDate?: string;
+	checkOutDate?: string;
+
 	hotelId: number;
 	onBookNow?: () => void;
 }
@@ -34,30 +36,32 @@ export const HotelMetaInfo: React.FC<HotelMetaInfoProps> = ({
 					</p>
 
 					<div className="flex items-center gap-4">
-						<p className="flex items-center gap-1">
-							<Users className="h-3 w-3" />
-							<span>{numberOfAdults}</span>
-						</p>
+						<div className="flex items-center gap-4 text-sm text-muted-foreground">
+							<div className="flex items-center gap-1">
+								<Users size={16} />
+								<span>{numberOfAdults} Adults</span>
+							</div>
+							{numberOfChildren > 0 && <span>{numberOfChildren} Children</span>}
+						</div>
 
-						<p className="flex items-center gap-1">
-							<Baby className="h-3 w-3" />
-							<span>{numberOfChildren}</span>
-						</p>
-
-						<p className="flex items-center gap-1">
-							<span>{numberOfRooms}</span>
-							<span>Room{numberOfRooms > 1 ? "s" : ""}</span>
-						</p>
+						{typeof numberOfRooms === "number" && (
+							<p className="flex items-center gap-1">
+								<span>{numberOfRooms}</span>
+								<span>Room{numberOfRooms > 1 ? "s" : ""}</span>
+							</p>
+						)}
 					</div>
 
-					<p className="flex items-center gap-2 text-xs">
-						<Calendar className="h-3 w-3" />
-						{checkInDate} → {checkOutDate}
-					</p>
+					{checkInDate && checkOutDate && (
+						<p className="flex items-center gap-2 text-xs">
+							<Calendar className="h-3 w-3" />
+							{checkInDate} → {checkOutDate}
+						</p>
+					)}
 				</div>
 
 				{onBookNow && (
-					<Button onClick={onBookNow}>
+					<Button asChild>
 						<Link to={USER_ROUTES.hotelDetail(hotelId)}>View Details</Link>
 					</Button>
 				)}
