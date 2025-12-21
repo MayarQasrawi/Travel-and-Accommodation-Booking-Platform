@@ -6,7 +6,7 @@ import MainSearchBar from "@/Pages/Home/components/SearchBar/MainSearchBar";
 import { type SearchParams, useSearchHotels } from "@/Pages/Home/hooks/useSearchHotels";
 import { filterHotels } from "@/utils/filterHotels";
 import { parseSearchParams } from "@/utils/searchQuery";
-import { SearchResultCard } from "../Home/components/hotel-card/SearchResultCard";
+import { SearchResultCard } from "../Home/components/hotel-card/cards/SearchResultCard";
 import FiltersSidebar from "./components/FilterSidebar/FiltersSidebar";
 import { useFilters } from "./hooks/useFilters";
 
