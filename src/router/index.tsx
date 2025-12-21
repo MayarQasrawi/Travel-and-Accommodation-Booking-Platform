@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import AdminLayout from "@/components/Layout/AdminLayout";
 import UserLayout from "@/components/Layout/UserLayout/UserLayout";
 import { ROUTES } from "@/constants/routes";
+import PageNotFound from "@/Pages/Errorpage/PageNotFound";
+import Unauthorized from "@/Pages/Errorpage/Unauthorized";
 import {
 	CartReviewPage,
 	CheckoutPage,
@@ -83,11 +85,11 @@ export const router = createBrowserRouter([
 
 	{
 		path: "/unauthorized",
-		element: <div>You do not have access to this page.</div>,
+		element: <Unauthorized />,
 	},
 	{
 		path: "*",
-		element: <div>Page Not Found</div>,
+		element: <PageNotFound />,
 	},
 ]);
 
