@@ -49,5 +49,9 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 		setIsLoading(false);
 	}, [setAuth]);
 
-	return <AuthContext.Provider value={{ user, isLoading, setAuth, logout }}>{children}</AuthContext.Provider>;
+	return (
+		<AuthContext.Provider value={{ user, isLoading, isAuthenticated: !!user, setAuth, logout }}>
+			{children}
+		</AuthContext.Provider>
+	);
 };
