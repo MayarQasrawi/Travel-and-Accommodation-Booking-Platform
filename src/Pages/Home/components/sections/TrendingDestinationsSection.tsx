@@ -1,7 +1,7 @@
 import { MapPin } from "lucide-react";
 import { GridPattern } from "@/components/Pattern/GridPattern";
 import { type TrendingDestination, useTrendingDestinations } from "@/Pages/Home/hooks/useTrendingDestinations";
-import { TrendingDestinationCard } from "../hotel-card/TrendingDestinationCard";
+import { TrendingDestinationCard } from "../hotel-card/cards/TrendingDestinationCard";
 import { HotelSection } from "./HotelSection";
 
 export const TrendingDestinationsSection: React.FC = () => {

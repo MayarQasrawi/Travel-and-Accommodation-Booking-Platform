@@ -37,12 +37,10 @@ export function HotelSection<T extends BaseHotel>({
 	if (!hotels) return null;
 	return (
 		<section className={`relative py-24 min-h-screen flex items-center  px-6 overflow-hidden ${bgColor}`}>
-			{/* Background Pattern */}
 			<div className="absolute inset-0 opacity-90">{backgroundPattern}</div>
 
 			<div className="max-w-7xl mx-auto relative z-10">
 				<div className={`flex flex-col lg:flex-row gap-16 items-start ${reverse ? "lg:flex-row-reverse" : ""}`}>
-					{/* Sidebar */}
 					<div className="lg:w-1/3 lg:sticky lg:top-24 space-y-6">
 						<Badge variant="destructive" className="bg-dark-green/10 text-primary">
 							{badgeIcon}
@@ -58,7 +56,6 @@ export function HotelSection<T extends BaseHotel>({
 						</div>
 					</div>
 
-					{/* Cards Grid */}
 					<div className="lg:w-2/3 space-y-6">
 						<div className="grid   grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
 							{isLoading
