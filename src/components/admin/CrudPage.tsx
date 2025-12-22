@@ -25,24 +25,22 @@ export function CrudPage<T extends { id: number; name: string }>({
 	const { deleteOpen, selected, openCreate, closeDelete } = store();
 
 	return (
-		<>
-			<main className="flex flex-col p-4 space-y-6">
-				<Header onSearch={onSearch} searchPlaceholder={searchPlaceholder || `Search ${label.toLowerCase()}...`} />
-				<div className="flex items-center justify-between">
-					<Title section={label} description={`Manage ${label} for your travel platform`} />
-					<CreateButton onClick={openCreate} label={label} variant="secondary" />
-				</div>
-				<div className="overflow-y-auto max-w-screen">{table}</div>
-				{form}
+		<main className="flex flex-col p-4 space-y-6">
+			<Header onSearch={onSearch} searchPlaceholder={searchPlaceholder || `Search ${label.toLowerCase()}...`} />
+			<div className="flex items-center justify-between">
+				<Title section={label} description={`Manage ${label} for your travel platform`} />
+				<CreateButton onClick={openCreate} label={label} variant="secondary" />
+			</div>
+			<div className="overflow-y-auto max-w-screen">{table}</div>
+			{form}
 
-				<DeleteConfirmDialog
-					open={deleteOpen}
-					onOpenChange={closeDelete}
-					itemName={selected?.name}
-					onConfirm={() => selected && onDelete(selected)}
-					description={`This will permanently delete "${selected?.name}". This action cannot be undone.`}
-				/>
-			</main>
-		</>
+			<DeleteConfirmDialog
+				open={deleteOpen}
+				onOpenChange={closeDelete}
+				itemName={selected?.name}
+				onConfirm={() => selected && onDelete(selected)}
+				description={`This will permanently delete "${selected?.name}". This action cannot be undone.`}
+			/>
+		</main>
 	);
 }
