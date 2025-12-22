@@ -1,14 +1,12 @@
-import { ShoppingCart } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/Pages/Home/components/hotel-card";
 import type { Room } from "@/types/hotel";
 
 interface RoomCardProps {
 	room: Room;
-	onAddToCart: (room: Room) => void;
+	actions?: React.ReactNode;
 }
 
-export function RoomCard({ room, onAddToCart }: RoomCardProps) {
+export function RoomCard({ room, actions }: RoomCardProps) {
 	return (
 		<Card className={!room.availability ? "opacity-50 hover:shadow-none" : ""}>
 			<Card.Image src={room.roomPhotoUrl} alt={room.roomType} />
@@ -24,14 +22,8 @@ export function RoomCard({ room, onAddToCart }: RoomCardProps) {
 				<Card.Price>
 					<Card.DiscountedPrice>{room.price}</Card.DiscountedPrice>
 				</Card.Price>
-				<Button
-					onClick={() => onAddToCart(room)}
-					disabled={!room.availability}
-					className={`gap-2 ${!room.availability ? "cursor-not-allowed" : "cursor-pointer"}`}
-				>
-					<ShoppingCart size={18} />
-					{room.availability ? "Add to Cart" : "Not Available"}
-				</Button>
+
+				{actions}
 			</Card.Content>
 		</Card>
 	);
