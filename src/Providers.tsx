@@ -1,5 +1,4 @@
 import { QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { PropsWithChildren } from "react";
 import { useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner";
@@ -21,7 +20,7 @@ export const Providers = ({ children }: PropsWithChildren) => {
 				{children}
 				<Toaster position="bottom-right" richColors />
 			</AuthProvider>
-			<ReactQueryDevtools initialIsOpen={false} />
+			{/* <ReactQueryDevtools initialIsOpen={false} /> */}
 		</QueryClientProvider>
 	);
 };

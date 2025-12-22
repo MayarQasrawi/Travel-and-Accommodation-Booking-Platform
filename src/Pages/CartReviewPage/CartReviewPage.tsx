@@ -27,7 +27,7 @@ export default function CartReviewPage() {
 			<PageHeader title="Cart Review" subtitle="Review your selected rooms before checkout" />
 
 			<ol className="grid grid-cols-[repeat(auto-fill,minmax(270px,1fr))] gap-6 mb-8 list-none ">
-				{cartItems.map((item, index) => (
+				{cartItems.map((item) => (
 					<li key={item.room.roomId} className="flex flex-col">
 						<RoomCard
 							room={item.room}
@@ -35,7 +35,7 @@ export default function CartReviewPage() {
 								<div className="flex gap-2 mt-4">
 									<Button
 										onClick={() => {
-											setSelectedIndex(index);
+											setSelectedIndex(item.room.roomId);
 											handleCheckout();
 										}}
 										className="flex-1 gap-2"
