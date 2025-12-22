@@ -1,0 +1,100 @@
+
+/* Simplified splash styles aligned with project tokens
+   Uses CSS theme variables defined in src/index.css
+*/
+
+.travio-splash-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(52,78,65,0.96), rgba(8,10,8,0.9));
+  -webkit-font-smoothing: antialiased;
+  animation: travio-fade-in 360ms ease-out;
+}
+
+.travio-splash-container.fade-out {
+  animation: travio-fade-out 600ms ease-in forwards;
+}
+
+.travio-splash-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2.25rem;
+}
+
+/* subtle rotating rings, using project neutral/beige */
+.compass-ring {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 9999px;
+  border: 2px solid rgba(218,215,207,0.10);
+  animation: travio-rotate 18s linear infinite;
+}
+
+.compass-ring-1 { width: 340px; height: 340px; }
+.compass-ring-2 { width: 460px; height: 460px; animation-direction: reverse; animation-duration: 26s; }
+
+.logo-container { position: relative; z-index: 10; display:flex; flex-direction:column; align-items:center; gap:0.5rem; }
+
+.logo-icon { width: 96px; height:96px; color: var(--color-beige); filter: drop-shadow(0 6px 18px rgba(0,0,0,0.45)); }
+.airplane-path { stroke: var(--color-beige); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:260; stroke-dashoffset:260; animation: travio-draw 1.6s ease-out 160ms forwards; }
+.logo-circle { stroke: rgba(218,215,207,0.18); stroke-width:2; }
+
+.brand-name {
+  font-family: 'Poppins', 'Quicksand', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-beige);
+  margin: 0;
+  letter-spacing: 0.02em;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  transform: translateY(8px);
+  opacity: 0;
+  animation: travio-slide-up 420ms ease-out 260ms forwards;
+}
+
+.tagline {
+  font-family: 'Poppins', 'Quicksand', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: rgba(218,215,207,0.9);
+  margin: 0;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transform: translateY(8px);
+  opacity: 0;
+  animation: travio-slide-up 420ms ease-out 340ms forwards;
+}
+
+.loading-bar { width: 160px; height: 4px; background: rgba(218,215,207,0.08); border-radius: 999px; overflow:hidden; margin-top:6px; }
+.loading-progress { height:100%; width:0%; background: linear-gradient(90deg, var(--color-beige), rgba(218,215,207,0.6)); animation: travio-loading 1.9s ease-in-out infinite; }
+
+/* Keyframes */
+@keyframes travio-fade-in { from { opacity:0 } to { opacity:1 } }
+@keyframes travio-fade-out { to { opacity:0; transform: scale(1.04) } }
+@keyframes travio-rotate { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
+@keyframes travio-draw { to { stroke-dashoffset: 0 } }
+@keyframes travio-slide-up { to { transform: translateY(0); opacity:1 } }
+@keyframes travio-loading { 0% { width: 0% } 50% { width: 68% } 100% { width: 100% } }
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .compass-ring-1 { width: 260px; height:260px; }
+  .compass-ring-2 { width: 360px; height:360px; }
+  .logo-icon { width:72px; height:72px }
+  .brand-name { font-size:1.75rem }
+}
+
+@media (max-width: 420px) {
+  .compass-ring-1 { width: 200px; height:200px; }
+  .compass-ring-2 { width: 280px; height:280px; }
+  .brand-name { font-size:1.35rem }
+}
