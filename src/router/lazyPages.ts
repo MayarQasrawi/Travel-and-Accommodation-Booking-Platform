@@ -12,6 +12,6 @@ export const RoomsPage = lazy(() => import("@/Pages/admin/rooms"));
 export const HomePage = lazy(() => import("@/Pages/Home"));
 export const SearchResultsPage = lazy(() => import("@/Pages/SearchResultsPage/SearchResultsPage"));
 export const HotelPage = lazy(() => import("@/Pages/Hotel/HotelPage"));
-export const CartReviewPage = lazy(() => import("@/Pages/Checkout/CartReviewPage"));
+export const CartReviewPage = lazy(() => import("@/Pages/CartReviewPage/CartReviewPage"));
 export const CheckoutPage = lazy(() => import("@/Pages/Checkout/CheckoutPage"));
 export const ConfirmationPage = lazy(() => import("@/Pages/Confirmation/ConfirmationPage"));

@@ -12,6 +12,10 @@ export const ROUTES = {
 		HOME: "/user/",
 		SEARCH_RESULTS: "/user/search-results/",
 		hotelDetail: (hotelId: string | number) => `/user/hotel/${hotelId}`,
+		CART_REVIEW: "/user/cart-review",
+		CHECKOUT: "/user/checkout",
+		CONFIRMATION: "/user/confirmation",
+		BOOKINGS: "/user/bookings/",
 	},
 
 	NOT_FOUND: "*",
