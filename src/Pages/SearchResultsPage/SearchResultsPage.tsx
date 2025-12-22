@@ -27,16 +27,16 @@ export default function SearchResultsPage() {
 	};
 
 	const { data: hotels, isLoading } = useSearchHotels(searchParams);
-	const filteredHotels = hotels ? filterHotels(hotels, filterState.filters) : [];
+	const filteredHotels = Array.isArray(hotels) ? filterHotels(hotels, filterState.filters) : [];
 
 	return (
 		<section>
 			<div className="flex w-full gap-6">
-				<aside className="w-72 fixed left-0 top-0 h-screen overflow-y-auto shadow-sm bg-background border-r">
+				<aside className="w-72 sticky top-0 max-h-screen overflow-y-auto shadow-sm bg-background border-r hidden md:block">
 					<FiltersSidebar filterState={filterState} />
 				</aside>
 
-				<section className="flex-1 ml-72 flex flex-col gap-6 p-4">
+				<section className="flex-1  flex flex-col gap-6 p-4">
 					<header>
 						<MainSearchBar onSearch={updateSearch} initialValues={searchParams} className="w-full" />
 					</header>
