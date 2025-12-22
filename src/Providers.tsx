@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/context/AuthContext";
 import { initNetworkMonitor } from "@/services/networkMonitor";
 import { queryClient } from "@/services/queryClient";
+import { TravioSplash } from "./components/common/TravioSlash.tsx/TravioSplash";
 
 export const Providers = ({ children }: PropsWithChildren) => {
 	useEffect(() => {
@@ -16,6 +17,7 @@ export const Providers = ({ children }: PropsWithChildren) => {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<AuthProvider>
+				<TravioSplash />
 				{children}
 				<Toaster position="bottom-right" richColors />
 			</AuthProvider>
