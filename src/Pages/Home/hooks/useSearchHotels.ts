@@ -4,8 +4,8 @@ import axiosInstance from "@/services/axios";
 
 export interface SearchParams {
 	city?: string;
-	checkInDate?: string;
-	checkOutDate?: string;
+	checkInDate?: Date;
+	checkOutDate?: Date;
 	adults?: number;
 	children?: number;
 	numberOfRooms?: number;

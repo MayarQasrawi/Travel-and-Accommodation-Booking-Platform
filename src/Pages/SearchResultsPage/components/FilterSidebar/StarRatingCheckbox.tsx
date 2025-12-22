@@ -1,4 +1,4 @@
-import { StarRating as Stars } from "@/components/admin/StarRating";
+import { StarRating as Stars } from "@/components/common/StarRating";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 

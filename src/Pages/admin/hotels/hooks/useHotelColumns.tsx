@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import type { Column } from "@/components/admin/DataTable";
-import { StarRating } from "@/components/admin/StarRating";
+import { StarRating } from "@/components/common/StarRating";
 import type { Hotel } from "@/Pages/admin/hotels/api/types";
 
 export default function useHotelColumns(cities: { id: number; name: string }[]) {

@@ -10,7 +10,6 @@ import { RangeSliderFilter } from "./RangeSliderFilter";
 import StarRating from "./StarRatingCheckbox";
 
 const STAR_RATINGS = [5, 4, 3, 2, 1] as const;
-
 interface FiltersSidebarProps {
 	filterState: ReturnType<typeof useFilters>;
 }
@@ -20,7 +19,7 @@ export default function FiltersSidebar({ filterState }: FiltersSidebarProps) {
 	const { filters, actions, config } = filterState;
 
 	return (
-		<Card className="p-4 bg-muted/40 max-w-[320px] max-h-screen overflow-y-auto space-y-2 rounded">
+		<Card className="p-4 bg-muted/40 w-full space-y-2 rounded-none ">
 			<CardHeader>
 				<CardTitle className="text-xl font-extrabold">Filters</CardTitle>
 				<CardAction>
@@ -59,18 +58,20 @@ export default function FiltersSidebar({ filterState }: FiltersSidebarProps) {
 					))}
 				</FilterSection>
 
-				<FilterSection title="Amenities">
-					<div className="flex flex-col gap-2">
-						{amenities.map((amenity) => (
-							<AmenityCheckbox
-								key={amenity.id}
-								amenity={amenity}
-								checked={filters.amenities.includes(amenity.id)}
-								onChange={(checked) => actions.updateAmenity(amenity.id, checked)}
-							/>
-						))}
-					</div>
-				</FilterSection>
+				{amenities.length > 0 && (
+					<FilterSection title="Amenities">
+						<div className="flex flex-col gap-2">
+							{amenities.map((amenity) => (
+								<AmenityCheckbox
+									key={amenity.id}
+									amenity={amenity}
+									checked={filters.amenities.includes(amenity.id)}
+									onChange={(checked) => actions.updateAmenity(amenity.id, checked)}
+								/>
+							))}
+						</div>
+					</FilterSection>
+				)}
 			</CardContent>
 		</Card>
 	);

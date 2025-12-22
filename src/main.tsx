@@ -4,6 +4,7 @@ import "@/index.css";
 import { RouterProvider } from "react-router-dom";
 import Providers from "@/Providers.tsx";
 import router from "@/routers";
+import "leaflet/dist/leaflet.css";
 
 // biome-ignore lint/style/noNonNullAssertion: Root is present in index.html
 createRoot(document.getElementById("root")!).render(

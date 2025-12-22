@@ -1,6 +1,9 @@
-import type { AnimationItem } from "lottie-web";
+import type React from "react";
+import type { PropsWithChildren } from "react";
+import type Logo from "@/components/common/Logo";
+
 export interface ContentProps {
-	title: string;
+	title?: string;
 	description: string;
 }
 
@@ -14,9 +17,16 @@ export interface FormTitleProps {
 	subtitle?: string;
 }
 
-export interface LottieAnimationProps {
-	animationData?: AnimationItem;
+export interface Image {
 	className?: string;
-	loop?: boolean;
-	autoplay?: boolean;
 }
+
+export type AuthLayoutComponent = React.FC<PropsWithChildren> & {
+	Brand: React.FC<PropsWithChildren>;
+	Logo: React.FC<React.ComponentProps<typeof Logo>>;
+	Image: React.FC<Image>;
+	Content: React.FC<ContentProps>;
+	Footer: React.FC<FooterProps>;
+	Form: React.FC<PropsWithChildren>;
+	FormTitle: React.FC<FormTitleProps>;
+};

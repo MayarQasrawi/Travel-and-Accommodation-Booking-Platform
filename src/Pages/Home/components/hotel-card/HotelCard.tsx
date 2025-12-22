@@ -10,7 +10,7 @@ export const HotelCard: React.FC<HotelCardProps> = ({ children, className = "" }
 		<section
 			className={`overflow-hidden hover:shadow-lg transition-shadow ${className} bg-primary-foreground rounded border-2 `}
 		>
-			<article className="flex flex-col h-full">{children}</article>
+			<article className="flex flex-col h-full ">{children}</article>
 		</section>
 	);
 };

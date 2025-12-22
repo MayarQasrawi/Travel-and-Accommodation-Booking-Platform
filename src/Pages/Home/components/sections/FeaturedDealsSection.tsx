@@ -1,7 +1,7 @@
 import { Sparkles } from "lucide-react";
 import { GridPattern } from "@/components/Pattern/GridPattern";
 import { useFeaturedDeals } from "../../hooks/useFeaturedDeals";
-import { FeaturedDealCard } from "../hotel-card/FeaturedDealCard";
+import { FeaturedDealCard } from "../hotel-card/cards/FeaturedDealCard";
 import { HotelSection } from "./HotelSection";
 
 export function FeaturedDealsSection() {

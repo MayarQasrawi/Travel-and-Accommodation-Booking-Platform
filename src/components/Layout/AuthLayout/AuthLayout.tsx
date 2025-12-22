@@ -2,12 +2,11 @@ import type { PropsWithChildren } from "react";
 import imgs from "@/assets/images/world-map-4460639_1280.png";
 import Logo from "@/components/common/Logo";
 import { APP_NAME } from "@/constants/storage";
-// import Lottie from 'lottie-react';
-// import img from '@/assets/animation/Welcome.json';
-import type { ContentProps, FooterProps, FormTitleProps, LottieAnimationProps } from "./types";
 
-const AuthLayout = ({ children }: PropsWithChildren) => {
-	return <main className="flex  flex-row min-h-screen">{children}</main>;
+import type { AuthLayoutComponent, ContentProps, FooterProps, FormTitleProps, Image } from "./types";
+
+const AuthLayout: AuthLayoutComponent = ({ children }) => {
+	return <main className="flex  flex-row h-screen ">{children}</main>;
 };
 
 AuthLayout.Brand = ({ children }: PropsWithChildren) => {
@@ -18,20 +17,14 @@ AuthLayout.Brand = ({ children }: PropsWithChildren) => {
 	);
 };
 
-AuthLayout.Logo = () => {
-	return <Logo />;
+AuthLayout.Logo = (props: React.ComponentProps<typeof Logo>) => {
+	return <Logo {...props} />;
 };
 
-AuthLayout.Animation = ({
-	// animationData = img,
-	className = "w-full max-w-lg mx-auto md:max-w-full ",
-}: // loop = true,
-// autoplay = true
-LottieAnimationProps) => {
+AuthLayout.Image = ({ className = "w-full max-w-lg mx-auto md:max-w-full " }: Image) => {
 	return (
 		<figure className={className}>
-			{/* <Lottie animationData={animationData} loop={loop} autoplay={autoplay} /> */}
-			<img src={imgs} alt="Travel Auth" />
+			<img src={imgs} alt="World map illustration for travel authentication" />
 		</figure>
 	);
 };
@@ -39,7 +32,7 @@ LottieAnimationProps) => {
 AuthLayout.Content = ({ title, description }: ContentProps) => {
 	return (
 		<section className="flex-1 flex flex-col justify-center max-w-xl p-6 md:p-12">
-			<h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4 md:mb-6">{title}</h1>
+			{title && <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4 md:mb-6">{title}</h1>}
 			<p className="text-lg md:text-xl opacity-90">{description}</p>
 		</section>
 	);
@@ -58,7 +51,7 @@ AuthLayout.Footer = ({ copyright = `© ${new Date().getFullYear()} ${APP_NAME}`,
 
 AuthLayout.Form = ({ children }: PropsWithChildren) => {
 	return (
-		<section className="w-full md:w-1/2 bg-muted flex items-center justify-center p-6 sm:p-8 md:p-12 min-h-screen">
+		<section className="w-full md:w-1/2 bg-muted flex items-center justify-center p-6 sm:p-8 md:p-12">
 			<div className="w-full max-w-md sm:max-w-sm md:max-w-md">{children}</div>
 		</section>
 	);

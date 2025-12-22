@@ -1,5 +1,4 @@
 import { FeaturedDealsSection } from "./components/sections/FeaturedDealsSection";
-import Footer from "./components/sections/Footer";
 import HeroSection from "./components/sections/HeroSection";
 import { RecentlyVisitedSection } from "./components/sections/RecentlyVisitedSection";
 
@@ -12,7 +11,6 @@ function Home() {
 			<FeaturedDealsSection />
 			<RecentlyVisitedSection />
 			<TrendingDestinationsSection />
-			<Footer />
 		</>
 	);
 }

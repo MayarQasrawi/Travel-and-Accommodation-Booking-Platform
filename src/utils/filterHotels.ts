@@ -1,5 +1,5 @@
 import type { SearchResult } from "@/Pages/Home/hooks/useSearchHotels";
-import type { Filters } from "@/Pages/SearchResultsPage/components/FilterSidebar/FiltersSidebar";
+import type { Filters } from "@/Pages/SearchResultsPage/hooks/useFilters";
 
 export function filterHotels(hotels: SearchResult[], filters: Filters): SearchResult[] {
 	return hotels.filter((hotel) => {
@@ -8,9 +8,9 @@ export function filterHotels(hotels: SearchResult[], filters: Filters): SearchRe
 
 		const matchesStar = filters.starRating.length === 0 || filters.starRating.includes(hotel.starRating);
 
-		const hotelAmenityIds = hotel.amenities.map((a) => a.id);
+		const hotelAmenityIds = Array.isArray(hotel.amenities) ? hotel.amenities.map((a) => a.id) : [hotel.amenities.id];
 		const matchesAmenities =
-			filters.amenities.length === 0 || filters.amenities.every((id) => hotelAmenityIds.includes(id));
+			filters.amenities.length === 0 || filters.amenities.every((id: number) => hotelAmenityIds.includes(id));
 
 		return matchesPrice && matchesStar && matchesAmenities;
 	});

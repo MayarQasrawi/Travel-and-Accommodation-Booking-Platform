@@ -1,7 +1,7 @@
 import { Clock } from "lucide-react";
 import { DiagonalLinesPattern } from "@/components/Pattern/DiagonalLinesPattern";
 import { type RecentlyVisitedHotel, useRecentlyVisitedHotels } from "../../hooks/useRecentlyVisitedHotels";
-import { RecentlyVisitedCard } from "../hotel-card/RecentlyVisitedCard";
+import { RecentlyVisitedCard } from "../hotel-card/cards/RecentlyVisitedCard";
 import { HotelSection } from "./HotelSection";
 
 export function RecentlyVisitedSection() {

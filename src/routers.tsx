@@ -5,42 +5,55 @@ import RoomsPage from "@/Pages/admin/rooms/index";
 import Home from "@/Pages/Home/index";
 import LoginPage from "@/Pages/Login/index";
 import AdminLayout from "./components/Layout/AdminLayout";
-import HotelPage from "./Pages/SearchResultsPage/SearchResultsPage";
+import UserLayout from "./components/Layout/UserLayout/UserLayout";
+import { ROUTES } from "./constants/routes";
+import HotelPage from "./Pages/Hotel/HotelPage";
+import SearchResultsPage from "./Pages/SearchResultsPage/SearchResultsPage";
 
 const router = createBrowserRouter([
 	{
-		path: "/",
+		path: ROUTES.LOGIN,
 		element: <LoginPage />,
 	},
 	{
-		path: "admin/",
+		path: ROUTES.ADMIN.BASE,
 		element: <AdminLayout />,
 		children: [
 			{
-				path: "cities",
+				path: ROUTES.ADMIN.CITIES,
 				index: true,
 				element: <CitiesPage />,
 			},
 			{
-				path: "hotels",
+				path: ROUTES.ADMIN.HOTELS,
 				element: <HotelsPage />,
 			},
 			{
-				path: "rooms",
+				path: ROUTES.ADMIN.ROOMS,
 				element: <RoomsPage />,
 			},
 		],
 	},
 	{
-		path: "user",
-		element: <Home />,
+		path: ROUTES.USER.BASE,
+		element: <UserLayout />,
+		children: [
+			{
+				element: <Home />,
+				index: true,
+			},
+			{
+				path: ROUTES.USER.SEARCH_RESULTS,
+				element: <SearchResultsPage />,
+			},
+			{
+				path: ROUTES.USER.hotelDetail(":hotelId"),
+				element: <HotelPage />,
+			},
+		],
 	},
 	{
-		path: "search-results/",
-		element: <HotelPage />,
-	},
-	{
-		path: "*",
+		path: ROUTES.NOT_FOUND,
 		element: <div>not found</div>,
 	},
 ]);

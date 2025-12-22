@@ -9,8 +9,8 @@ interface QuranVerseHeroProps {
 
 const QuranVerseHero = ({
 	className,
-	mainTitle = "Find Your Perfect",
-	highlightedTitle = "Stay",
+	mainTitle = "Travel Smarter with",
+	highlightedTitle = "Travio",
 	arabicVerse = "﴿ قُلْ سِيرُوا فِي الْأَرْضِ فَانظُرُوا كَيْفَ بَدَأَ الْخَلْقَ ﴾",
 }: QuranVerseHeroProps) => {
 	return (
@@ -18,7 +18,7 @@ const QuranVerseHero = ({
 			<h1 className="text-5xl md:text-6xl font-bold mb-4">
 				{mainTitle}
 				<p className="mt-2">
-					<span className=" text-primary">{highlightedTitle}</span>
+					<span className=" text-gold">{highlightedTitle}</span>
 				</p>
 			</h1>
 

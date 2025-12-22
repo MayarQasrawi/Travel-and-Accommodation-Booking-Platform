@@ -18,6 +18,7 @@
   --color-dark-green: #344E41;
   --color-beige: #DAD7CF;
   --color-gold: var(--gold);
+  --color-blue: var(--blue);
 
   /* connect Tailwind colors → CSS variables */
   --color-background: var(--bg);
@@ -92,6 +93,7 @@
 
 --destructive: oklch(0.55 0.25 25);
 --gold:oklch(70.257% 0.14595 99.887 / 0.684);
+--blue:oklab(46.649% -0.01894 -0.15377);
 
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
