@@ -14,7 +14,7 @@ export interface CartItem {
 interface CartStore {
 	cartItems: CartItem[];
 	selectedIndex: number | null;
-	setSelectedIndex: (index: number | null) => void;
+	setSelectedIndex: (roomId: number | null) => void;
 	addToCart: (room: Room, hotel: Hotel, checkInDate: Date, checkOutDate: Date, pricePerNight: number) => void;
 	removeFromCart: (roomId: number) => void;
 	clearCart: () => void;
@@ -46,7 +46,7 @@ export const useCartStore = create<CartStore>()(
 			cartItems: [],
 			selectedIndex: null,
 
-			setSelectedIndex: (index) => set({ selectedIndex: index }),
+			setSelectedIndex: (roomId) => set({ selectedIndex: roomId }),
 
 			addToCart: (room, hotel, checkInDate, checkOutDate, pricePerNight) => {
 				set((state) => {
@@ -54,7 +54,7 @@ export const useCartStore = create<CartStore>()(
 					const exists = state.cartItems.some(
 						(item) =>
 							item.room.roomId === room.roomId &&
-							item.hotel.hotelId === hotel.hotelId &&
+							item.hotel.hotelName === hotel.hotelName &&
 							item.checkInDate === checkInDate.toISOString() &&
 							item.checkOutDate === checkOutDate.toISOString(),
 					);
