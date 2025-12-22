@@ -12,7 +12,7 @@ function ThumbnailButton({ src, alt, isActive, onClick }: ThumbnailButtonProps) 
 			onClick={onClick}
 			className={`relative shrink-0 w-24 h-20 rounded overflow-hidden 
                       border-3 transition-all
-                      ${isActive ? "border-primary" : "border-transparent opacity-50 hover:opacity-100"}`}
+                      ${isActive ? "border" : "border-transparent opacity-50 hover:opacity-100"}`}
 		>
 			<img src={src} alt={alt} className="w-full h-full object-cover" />
 		</button>
