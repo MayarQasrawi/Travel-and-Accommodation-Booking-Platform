@@ -15,3 +15,4 @@ export const HotelPage = lazy(() => import("@/Pages/Hotel/HotelPage"));
 export const CartReviewPage = lazy(() => import("@/Pages/CartReviewPage/CartReviewPage"));
 export const CheckoutPage = lazy(() => import("@/Pages/Checkout/CheckoutPage"));
 export const ConfirmationPage = lazy(() => import("@/Pages/Confirmation/ConfirmationPage"));
+export const BookingPage = lazy(() => import("@/Pages/Booking/Booking"));
