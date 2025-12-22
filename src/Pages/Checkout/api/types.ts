@@ -37,7 +37,7 @@ export interface BookingConfirmation {
 	hotelName: string;
 	roomNumber: string;
 	roomType: string;
-	bookingDateTime: string; // ISO string
+	bookingDateTime: string;
 	totalCost: number;
 	paymentMethod: string;
 	bookingStatus: "Confirmed" | "Pending" | "Cancelled";
