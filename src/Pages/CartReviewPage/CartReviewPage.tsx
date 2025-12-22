@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import PageHeader from "@/components/common/PageHeader";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/constants/routes";
 import { useCartStore } from "@/store/cartStore";
@@ -23,29 +24,30 @@ export default function CartReviewPage() {
 
 	return (
 		<section className="container mx-auto p-4 md:p-10 ">
-			<header className="mb-8">
-				<h1 className="text-4xl font-bold mb-2">Review Your Rooms</h1>
-				<p className="text-gray-600">Review your selected rooms before checkout</p>
-			</header>
+			<PageHeader title="Cart Review" subtitle="Review your selected rooms before checkout" />
 
-			<ol className="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-6 mb-8 list-none ">
+			<ol className="grid grid-cols-[repeat(auto-fill,minmax(270px,1fr))] gap-6 mb-8 list-none ">
 				{cartItems.map((item, index) => (
 					<li key={item.room.roomId} className="flex flex-col">
 						<RoomCard
 							room={item.room}
 							actions={
-								<div className="flex gap-2 mt-4 flex-1">
+								<div className="flex gap-2 mt-4">
 									<Button
 										onClick={() => {
 											setSelectedIndex(index);
 											handleCheckout();
 										}}
-										className="gap-2"
+										className="flex-1 gap-2"
 									>
 										Book
 									</Button>
 
-									<Button variant="destructive" onClick={() => removeFromCart(item.room.roomId)} className="gap-2">
+									<Button
+										variant="destructive"
+										onClick={() => removeFromCart(item.room.roomId)}
+										className="flex-1 gap-2"
+									>
 										Remove
 									</Button>
 								</div>
