@@ -1,0 +1,27 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.3.6/schema.json",
+	"formatter": {
+		"enabled": true,
+		"indentWidth": 2,
+		"lineWidth": 120
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"suspicious": {
+				"noArrayIndexKey": "off"
+			},
+			"correctness": {
+				"noUnusedImports": {
+					"level": "error",
+					"fix": "safe"
+				}
+			}
+		}
+	},
+
+	"files": {
+		"includes": ["**/*.js", "**/*.ts", "**/*.tsx", "**/*.json", "!**/*.css"]
+	}
+}

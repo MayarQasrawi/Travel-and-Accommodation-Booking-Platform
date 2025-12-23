@@ -1,0 +1,39 @@
+import type { FormikHelpers } from "formik";
+import { FormSheet } from "@/components/admin/FormSheet";
+import type { Hotel } from "../api/types";
+import { useCreateHotelMutation } from "../hooks/useCreateHotelMutation";
+import { useUpdateHotelMutation } from "../hooks/useUpdateHotelMutation";
+import { HotelForm, type HotelFormValues } from "./HotelForm";
+
+interface HotelFormSheetProps {
+	open: boolean;
+	onOpenChange: (open: boolean) => void;
+	hotel?: Hotel;
+}
+
+export function HotelFormSheet({ open, onOpenChange, hotel }: HotelFormSheetProps) {
+	const createMutation = useCreateHotelMutation();
+	const updateMutation = useUpdateHotelMutation();
+
+	const handleSubmit = (values: HotelFormValues, helpers: FormikHelpers<HotelFormValues>) => {
+		if (hotel) {
+			updateMutation.mutate({ ...values, id: hotel.id });
+		} else {
+			createMutation.mutate(values);
+		}
+		onOpenChange(false);
+		helpers.resetForm();
+	};
+
+	return (
+		<FormSheet<HotelFormValues>
+			open={open}
+			onOpenChange={onOpenChange}
+			title={hotel ? "Edit Hotel" : "Create New Hotel"}
+			description={hotel ? "Update the hotel information below." : "Fill in the information to create a new hotel."}
+			initialValues={hotel}
+			onSubmit={handleSubmit}
+			FormComponent={HotelForm}
+		/>
+	);
+}

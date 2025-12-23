@@ -1,0 +1,144 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+/* Correct Tailwind 4 custom variant syntax */
+@custom-variant dark (&:where(.dark, .dark &));
+/* ================================================
+   TAILWIND THEME TOKENS
+   These tokens become Tailwind utilities.
+================================================ */
+@theme {
+  --radius: 0.625rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Custom Colors */
+  --color-dark-green: #344E41;
+  --color-beige: #DAD7CF;
+  --color-gold: var(--gold);
+  --color-blue: var(--blue);
+
+  /* connect Tailwind colors → CSS variables */
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-fg);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-fg);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-fg);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-fg);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-fg);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-fg);
+
+  --color-destructive: var(--destructive);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Charts */
+  --color-chart-1: var(--chart1);
+  --color-chart-2: var(--chart2);
+  --color-chart-3: var(--chart3);
+  --color-chart-4: var(--chart4);
+  --color-chart-5: var(--chart5);
+
+  /* Sidebar */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-fg);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-fg);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-fg);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* ================================================
+   LIGHT MODE VARIABLES
+================================================ */
+:root {
+  --bg: oklch(1 0 0);
+  --fg: oklch(0.145 0 0);
+
+  --card: oklch(1 0 0);
+  --card-fg: oklch(0.145 0 0);
+
+  --popover: oklch(1 0 0);
+  --popover-fg: oklch(0.145 0 0);
+
+  --primary: oklch(0.205 0 0);
+  --primary-fg: oklch(0.985 0 0);
+
+  --secondary: oklch(0.97 0 0);
+  --secondary-fg: oklch(0.205 0 0);
+
+  --muted: oklch(0.97 0 0);
+  --muted-fg: oklch(0.556 0 0);
+
+  --accent: oklch(0.97 0 0);
+  --accent-fg: oklch(0.205 0 0);
+
+--destructive: oklch(0.55 0.25 25);
+--gold:oklch(70.257% 0.14595 99.887 / 0.684);
+--blue:oklab(46.649% -0.01894 -0.15377);
+
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+
+  --chart1: oklch(0.646 0.222 41.116);
+  --chart2: oklch(0.6 0.118 184.704);
+  --chart3: oklch(0.398 0.07 227.392);
+  --chart4: oklch(0.828 0.189 84.429);
+  --chart5: oklch(0.769 0.188 70.08);
+
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-fg: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-fg: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-fg: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+}
+
+/* ================================================
+   BASE STYLES
+================================================ */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Quicksand', 'Poppins', sans-serif;
+  }
+}
+
+@theme inline {
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
