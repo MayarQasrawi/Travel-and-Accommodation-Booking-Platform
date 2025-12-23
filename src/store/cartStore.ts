@@ -42,42 +42,46 @@ function calculateNights(checkInDate: string, checkOutDate: string): number {
 
 export const useCartStore = create<CartStore>()(
 	persist(
-		(set) => ({
+		(set, get) => ({
 			cartItems: [],
 			selectedIndex: null,
 
-			setSelectedIndex: (roomId) => set({ selectedIndex: roomId }),
+			setSelectedIndex: (roomId: number | null) => set({ selectedIndex: roomId }),
 
 			addToCart: (room, hotel, checkInDate, checkOutDate, pricePerNight) => {
-				set((state) => {
-					const exists = state.cartItems.some(
-						(item) =>
-							item.room.roomId === room.roomId &&
-							item.checkInDate === checkInDate.toISOString() &&
-							item.checkOutDate === checkOutDate.toISOString() &&
-							item.pricePerNight === pricePerNight,
-					);
+				const checkInISO = checkInDate.toISOString();
+				const checkOutISO = checkOutDate.toISOString();
 
-					if (exists) return state; // Do not add duplicate
+				console.log("CartStore: Adding to cart", { room, hotel, checkInISO, checkOutDate, pricePerNight });
 
-					return {
-						cartItems: [
-							...state.cartItems,
-							{
-								room,
-								hotel,
-								checkInDate: checkInDate.toISOString(),
-								checkOutDate: checkOutDate.toISOString(),
-								pricePerNight,
-							},
-						],
-					};
-				});
+				const exists = get().cartItems.some(
+					(item) =>
+						item.room.roomId === room.roomId &&
+						item.hotel.hotelName === hotel.hotelName &&
+						// item.checkInDate === checkInISO &&
+						// item.checkOutDate === checkOutISO &&
+						item.pricePerNight === pricePerNight,
+				);
+
+				if (exists) return;
+
+				set((state) => ({
+					cartItems: [
+						...state.cartItems,
+						{
+							room,
+							hotel,
+							checkInDate: checkInISO,
+							checkOutDate: checkOutISO,
+							pricePerNight,
+						},
+					],
+				}));
 			},
 
-			removeFromCart: (roomId) =>
+			removeFromCart: (roomId: number) =>
 				set((state) => ({
-					cartItems: state.cartItems.filter((item) => !(item.room.roomId === roomId)),
+					cartItems: state.cartItems.filter((item) => item.room.roomId !== roomId),
 				})),
 
 			clearCart: () => set({ cartItems: [], selectedIndex: null }),
