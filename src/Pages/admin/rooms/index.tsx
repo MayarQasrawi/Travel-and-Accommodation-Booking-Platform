@@ -23,7 +23,7 @@ function RoomsPage() {
 			store={useRoomStore}
 			onSearch={handleSearch}
 			onDelete={async (room) => {
-				await deleteMutation.mutateAsync(room.roomId);
+				await deleteMutation.mutateAsync(room?.roomId);
 			}}
 			searchPlaceholder="Search rooms by number..."
 		/>

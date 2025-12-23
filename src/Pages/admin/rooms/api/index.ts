@@ -21,7 +21,8 @@ export const roomsApi = {
 		return response.data;
 	},
 
-	deleteRoom: async (roomId: number) => {
+	deleteRoom: async (roomId: number | undefined) => {
+		if (!roomId) throw new Error("Room ID is required for deletion");
 		const response = await axiosInstance.delete<void>(`/rooms/${roomId}`);
 		return response.data;
 	},
