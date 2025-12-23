@@ -33,12 +33,11 @@ Maintaining a clean and reliable codebase was a priority, supported by modern to
 - **Jest & React Testing Library:** Comprehensive testing focused on user interactions to guarantee feature reliability.  
 - **Vite:** Providing an ultra-fast development server and optimized builds for production.  
 - **VS Code:** The primary IDE, harnessing powerful debugging and TypeScript support for efficient development.
-
 ## 📸 Screenshots
 
 ### User-facing Pages
 
-Home Page
+#### Home Page
 ![Home Hero](docs/HomeHero.png)
 
 ![Featured Deal](docs/FeatuerdDeal.png)
@@ -47,57 +46,62 @@ Home Page
 
 ![Popular Destination](docs/PopularDestnation.png)
 
-Search Page
-
+#### Search Page
 ![Search Page](docs/SearchPage.png)
 
+### Filter Sidebar
 ![Filter Sidebar](docs/filterSidebar.png)
 
-Hotel Page
-![Hotel Page Full Screen](docs/HotelPageFullScreen.png)
+#### Hotel Page
+![Hotel Page Full Screen](docs/HotelPage.png)
 
-![Hotel Page Top](docs/HotelPageTop.png)
+![Hotel Page Top](docs/AvalibleRooms.png)
 
-Cart Page
+#### Cart Page
 ![Cart](docs/Cart.png)
+
+#### Empty Cart
+
 ![Empty Cart](docs/emptyCart.png)
 
-
-Checkout Page
+#### Checkout Page
 ![Checkout](docs/checkout.png)
+#### Confirmation Model
+
 ![Confirmation Modal](docs/cofimationModer.png)
 
-Confirmation Page
+#### Confirmation Page
 ![Booking Confirmation](docs/bookingConfiramtion.png)
 
-Booking Page
+#### Booking Page
 ![Booking Page](docs/bookinPage.png)
+
+#### No Booking 
+
 ![No Booking](docs/NoBooking.png)
-
-
-
 
 ---
 
 ### Admin Pages
-Hotel Page
+
+#### Hotel Page
 ![Admin Hotels](docs/AdminHotels.png)
 
-
-Rooms page
-
+#### Rooms Page
 ![Admin Rooms](docs/Admin-Rooms.png)
-Cities Page
 
+#### Cities Page
 ![Admin Cities](docs/AdminCities.png)
 
-Edite Hotel
+#### Edit Hotel
 ![Admin Edit](docs/AdminEdite.png)
-delete Hotel
+
+#### Delete Hotel
 ![Admin Delete](docs/AdminDelete.png)
 
-Create Hotel
+#### Create Hotel
 ![Admin Create](docs/AdminCreate.png)
+
 
 
 ## ⚙️ Installation and Setup
