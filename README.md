@@ -34,6 +34,8 @@ Maintaining a clean and reliable codebase was a priority, supported by modern to
 - **Vite:** Providing an ultra-fast development server and optimized builds for production.  
 - **VS Code:** The primary IDE, harnessing powerful debugging and TypeScript support for efficient development.
 ## 📸 Screenshots
+### Login 
+<img src="docs/login.png" alt="login" width="700" />
 
 ### User-facing Pages
 
@@ -97,6 +99,9 @@ Maintaining a clean and reliable codebase was a priority, supported by modern to
 
 #### Create Hotel
 <img src="docs/AdminCreate.png" alt="Create Hotel" width="700" />
+
+---
+
 
 
 
