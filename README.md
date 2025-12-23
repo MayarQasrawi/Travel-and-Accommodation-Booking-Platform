@@ -4,6 +4,10 @@
 
 Travio is a comprehensive, high-performance web application designed to streamline the entire process of searching, booking, and managing hotel accommodations. Developed during a Frontend Internship at **Foothill Technology Solution**, this platform offers a seamless experience for both travelers and administrators, built with modern frontend architecture and a strong focus on type safety and code quality.
 
+## 📄 Software Requirements Specification (SRS)
+
+You can download the full [Software Requirements Specification (SRS) document](https://drive.google.com/file/d/1zKk3PvI_4MWlQU-QEdTGpaaMcSNuWcDV/view?usp=sharing) here.
+
 ## ✨ Key Features
 
 The platform consists of two main interfaces, delivering a full-featured solution:
@@ -16,19 +20,20 @@ The platform consists of two main interfaces, delivering a full-featured solutio
 
 ## 🎥 Application Demo Video
 
-**Watch the full demo here:**  
-[Click to watch the video](https://drive.google.com/file/d/1ohxE6NDcIb2LcTNheaA2wUwZYJ1KxzBh/view?usp=sharing)
+[![Watch Demo](docs/HomeHero.png)](https://drive.google.com/file/d/1ohxE6NDcIb2LcTNheaA2wUwZYJ1KxzBh/view?usp=sharing)
 
+Or click here to watch the [full demo video](https://drive.google.com/file/d/1ohxE6NDcIb2LcTNheaA2wUwZYJ1KxzBh/view?usp=sharing)
 
 ## 🛠️ Technical Stack: Built for Performance and Developer Experience
 
-Travio is built on a carefully selected stack of modern tools that optimize performance and maintainability:
+Travio is built on a carefully selected stack of modern tools that optimize performance and maintainability. For a detailed description of the full technical stack and tools used, please refer to the [(SRS) document](https://drive.google.com/file/d/1zKk3PvI_4MWlQU-QEdTGpaaMcSNuWcDV/view?usp=sharing)
 
 - **React 19 & TypeScript:** Building scalable, type-safe user interfaces that catch errors early and enhance developer productivity.  
 - **Tailwind CSS & ShadCN UI:** Delivering fast, consistent, and accessible styling with a utility-first approach.  
 - **Zustand & TanStack Query:** Managing complex application state and server-side data fetching efficiently.  
 - **Formik & Yup:** Handling form state and validation robustly for smooth user interactions.  
 - **React Router (v7):** Enabling intuitive and seamless client-side navigation.
+
 
 ## 🚀 Ensuring Code Quality and Developer Efficiency
 
