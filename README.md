@@ -34,6 +34,33 @@ Maintaining a clean and reliable codebase was a priority, supported by modern to
 - **Vite:** Providing an ultra-fast development server and optimized builds for production.  
 - **VS Code:** The primary IDE, harnessing powerful debugging and TypeScript support for efficient development.
 
+## 📸 Screenshots
+
+| Cart | Featured Deal | No Booking | Popular Destination |
+|-------|---------------|------------|--------------------|
+| ![Cart](docs/Cart.png) | ![Featured Deal](docs/FeatuerdDeal.png) | ![No Booking](docs/NoBooking.png) | ![Popular Destination](docs/PopularDestination.png) |
+
+| Recent Visit | Home Hero | Search Page | Checkout |
+|--------------|-----------|-------------|----------|
+| ![Recent Visit](docs/RecentVisit.png) | ![Home Hero](docs/HomeHero.png) | ![Search Page](docs/SearchPage.png) | ![Checkout](docs/checkout.png) |
+
+| Empty Cart | Booking Page | Filter Sidebar | Booking Confirmation |
+|------------|--------------|----------------|----------------------|
+| ![Empty Cart](docs/emptyCart.png) | ![Booking Page](docs/bookinPage.png) | ![Filter Sidebar](docs/filterSidebar.png) | ![Booking Confirmation](docs/bookingConfirmtion.png) |
+
+| Hotel Page Full Screen | Hotel Page Top | Confirmation Modal | Admin Hotels |
+|-----------------------|----------------|--------------------|--------------|
+| ![Hotel Page Full Screen](docs/HotelPageFullScreen.png) | ![Hotel Page Top](docs/HotelPageTop.png) | ![Confirmation Modal](docs/cofimationModer.png) | ![Admin Hotels](docs/AdminHotels.png) |
+
+| Admin Edit | Admin Delete | Admin Create | Admin Rooms |
+|------------|--------------|--------------|-------------|
+| ![Admin Edit](docs/AdminEdite.png) | ![Admin Delete](docs/AdminDelete.png) | ![Admin Create](docs/AdminCreate.png) | ![Admin Rooms](docs/Admin-Rooms.png) |
+
+| Admin Cities |
+|--------------|
+| ![Admin Cities](docs/AdminCities.png) |
+
+
 ## ⚙️ Installation and Setup
 
 To get started locally, follow these steps:
