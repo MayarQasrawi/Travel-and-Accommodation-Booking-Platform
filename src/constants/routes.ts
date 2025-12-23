@@ -2,7 +2,7 @@ export const ROUTES = {
 	LOGIN: "/",
 
 	ADMIN: {
-		BASE: "/admin",
+		BASE: "/admin/",
 		CITIES: "/admin/cities",
 		HOTELS: "/admin/hotels",
 		ROOMS: "/admin/rooms",
