@@ -37,70 +37,67 @@ Maintaining a clean and reliable codebase was a priority, supported by modern to
 
 ### User-facing Pages
 
-#### Home Page
-![Home Hero](docs/HomeHero.png)
+#### Home Page  
+<img src="docs/HomeHero.png" alt="Home Hero" width="700" />
 
-![Featured Deal](docs/FeatuerdDeal.png)
+#### Featured Deal  
+<img src="docs/FeatuerdDeal.png" alt="Featured Deal" width="700" />
 
-![Recent Visit](docs/RecentVisit.png)
+#### Recent Visit  
+<img src="docs/RecentVisit.png" alt="Recent Visit" width="700" />
 
-![Popular Destination](docs/PopularDestnation.png)
+#### Popular Destination  
+<img src="docs/PopularDestnation.png" alt="Popular Destination" width="700" />
 
 #### Search Page
-![Search Page](docs/SearchPage.png)
+<img src="docs/SearchPage.png" alt="Search Page" width="700" />
 
-### Filter Sidebar
-![Filter Sidebar](docs/filterSidebar.png)
+#### Filter Sidebar
+<img src="docs/filterSidebar.png" alt="Filter Sidebar" width="700" />
 
 #### Hotel Page
-![Hotel Page Full Screen](docs/HotelPage.png)
-
-![Hotel Page Top](docs/AvalibleRooms.png)
+<img src="docs/HotelPage.png" alt="Hotel Page Full Screen" width="700" />
 
 #### Cart Page
-![Cart](docs/Cart.png)
+<img src="docs/Cart.png" alt="Cart" width="700" />
 
 #### Empty Cart
-
-![Empty Cart](docs/emptyCart.png)
+<img src="docs/emptyCart.png" alt="Empty Cart" width="700" />
 
 #### Checkout Page
-![Checkout](docs/checkout.png)
-#### Confirmation Model
+<img src="docs/checkout.png" alt="Checkout" width="700" />
 
-![Confirmation Modal](docs/cofimationModer.png)
+#### Confirmation Model
+<img src="docs/cofimationModer.png" alt="Confirmation Modal" width="700" />
 
 #### Confirmation Page
-![Booking Confirmation](docs/bookingConfiramtion.png)
-
-#### Booking Page
-![Booking Page](docs/bookinPage.png)
+<img src="docs/bookingConfiramtion.png" alt="Booking Confirmation" width="700" />
 
 #### No Booking 
-
-![No Booking](docs/NoBooking.png)
+<img src="docs/NoBooking.png" alt="No Booking" width="700" />
 
 ---
 
 ### Admin Pages
 
 #### Hotel Page
-![Admin Hotels](docs/AdminHotels.png)
+<img src="docs/AdminHotels.png" alt="Admin Hotels" width="700" />
 
 #### Rooms Page
-![Admin Rooms](docs/Admin-Rooms.png)
+<img src="docs/Admin-Rooms.png" alt="Admin Rooms" width="700" />
 
 #### Cities Page
-![Admin Cities](docs/AdminCities.png)
+<img src="docs/AdminCities.png" alt="Admin Cities" width="700" />
 
 #### Edit Hotel
-![Admin Edit](docs/AdminEdite.png)
+<img src="docs/AdminEdite.png" alt="Edit Hotel" width="700" />
 
 #### Delete Hotel
-![Admin Delete](docs/AdminDelete.png)
+<img src="docs/AdminDelete.png" alt="Delete Hotel" width="700" />
 
 #### Create Hotel
-![Admin Create](docs/AdminCreate.png)
+<img src="docs/AdminCreate.png" alt="Create Hotel" width="700" />
+
 
 
 
