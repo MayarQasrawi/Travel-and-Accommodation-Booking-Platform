@@ -5,6 +5,7 @@ import { ROUTES } from "@/constants/routes";
 import PageNotFound from "@/Pages/Errorpage/PageNotFound";
 import Unauthorized from "@/Pages/Errorpage/Unauthorized";
 import {
+	BookingPage,
 	CartReviewPage,
 	CheckoutPage,
 	CitiesPage,
@@ -79,6 +80,10 @@ export const router = createBrowserRouter([
 			{
 				path: ROUTES.USER.CONFIRMATION,
 				element: withSuspense(<ConfirmationPage />),
+			},
+			{
+				path: ROUTES.USER.BOOKINGS,
+				element: withSuspense(<BookingPage />),
 			},
 		],
 	},

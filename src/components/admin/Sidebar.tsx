@@ -17,13 +17,14 @@ import {
 	SidebarMenuItem,
 	useSidebar,
 } from "@/components/ui/sidebar";
+import { ADMIN_ROUTES } from "@/constants/routes";
 import { useAuth } from "@/hooks/useAuth";
 import { cn } from "@/lib/utils";
 
 const navigation = [
-	{ id: "cities", label: "Cities", path: "/admin/cities", icon: Building2 },
-	{ id: "hotels", label: "Hotels", path: "/admin/hotels", icon: Hotel },
-	{ id: "rooms", label: "Rooms", path: "/admin/rooms", icon: DoorOpen },
+	{ id: "cities", label: "Cities", path: ADMIN_ROUTES.BASE, icon: Building2 },
+	{ id: "hotels", label: "Hotels", path: ADMIN_ROUTES.HOTELS, icon: Hotel },
+	{ id: "rooms", label: "Rooms", path: ADMIN_ROUTES.ROOMS, icon: DoorOpen },
 ];
 
 export default function AdminSidebar() {

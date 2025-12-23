@@ -1,5 +1,5 @@
 export function formatDate(
-	dateString: string,
+	dateInput: string | Date,
 	locale: string = "en-US",
 	options: Intl.DateTimeFormatOptions = {
 		year: "numeric",
@@ -7,11 +7,11 @@ export function formatDate(
 		day: "numeric",
 	},
 ): string {
-	if (!dateString) return "";
+	if (!dateInput) return "";
 
-	const date = new Date(dateString);
+	const date = typeof dateInput === "string" ? new Date(dateInput) : dateInput;
 
-	if (isNaN(date.getTime())) return "";
+	if (Number.isNaN(date.getTime())) return "";
 
 	return date.toLocaleDateString(locale, options);
 }

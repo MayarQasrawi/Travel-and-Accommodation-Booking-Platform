@@ -18,7 +18,13 @@ export default function SearchBar({ placeholder = "Search...", onSearch, classNa
 
 	return (
 		<div className={`flex gap-2 ${className}`}>
-			<SearchInput value={query} placeholder={placeholder} onChange={setQuery} onEnter={handleSubmit} />
+			<SearchInput
+				value={query}
+				placeholder={placeholder}
+				onChange={setQuery}
+				onEnter={handleSubmit}
+				className="w-50 md:w-96"
+			/>
 
 			<Button onClick={handleSubmit} className="flex items-center gap-2">
 				<Search className="h-4 w-4" />

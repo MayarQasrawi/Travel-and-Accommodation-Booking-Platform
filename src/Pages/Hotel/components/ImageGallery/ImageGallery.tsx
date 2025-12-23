@@ -25,7 +25,6 @@ export function ImageGallery({ images, alt, onImageClick }: ImageGalleryProps) {
 
 	return (
 		<section className="w-full space-y-3">
-			{/* MAIN IMAGE */}
 			<div className="relative h-[350px] sm:h-[420px] rounded overflow-hidden group">
 				<img
 					src={images[currentIndex]}
@@ -52,7 +51,6 @@ export function ImageGallery({ images, alt, onImageClick }: ImageGalleryProps) {
 				)}
 			</div>
 
-			{/* THUMBNAILS */}
 			{hasMultipleImages && (
 				<div className="flex gap-3 overflow-x-auto pb-2">
 					{images.map((img, idx) => (

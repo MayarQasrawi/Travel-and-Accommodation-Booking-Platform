@@ -1,4 +1,4 @@
-import { Bed, Calendar, Users } from "lucide-react";
+import { Bed, Calendar, Eye, EyeClosed, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { USER_ROUTES } from "@/constants/routes";
@@ -27,7 +27,7 @@ export const HotelMetaInfo: React.FC<HotelMetaInfoProps> = ({
 	onBookNow,
 }) => {
 	return (
-		<div className="space-y-3">
+		<div className="space-y-3 flex flex-col">
 			<div className="flex items-center justify-between">
 				<div className="text-sm text-muted-foreground space-y-2">
 					<p className="flex items-center gap-2">
@@ -59,13 +59,19 @@ export const HotelMetaInfo: React.FC<HotelMetaInfoProps> = ({
 						</p>
 					)}
 				</div>
-
-				{onBookNow && (
-					<Button asChild>
-						<Link to={USER_ROUTES.hotelDetail(hotelId)}>View Details</Link>
-					</Button>
-				)}
 			</div>
+
+			{onBookNow && (
+				<div className="w-full">
+					<Button asChild className="w-full group">
+						<Link to={USER_ROUTES.hotelDetail(hotelId)} className="flex items-center justify-center gap-2">
+							View Details
+							<EyeClosed className="block group-hover:hidden" />
+							<Eye className="hidden group-hover:block" />
+						</Link>
+					</Button>
+				</div>
+			)}
 		</div>
 	);
 };

@@ -15,12 +15,12 @@ function NavigationButton({ direction, onClick }: NavigationButtonProps) {
 	return (
 		<Button
 			type="button"
+			variant="link"
 			className={`absolute ${positionClass} top-0 h-full px-3 flex items-center 
                        ${gradientClass} from-black/40 to-transparent text-white
                        opacity-0 group-hover:opacity-100 transition-opacity z-10`}
 			onClick={onClick}
 		>
-			variant="link"
 			<Icon size={28} />
 		</Button>
 	);
