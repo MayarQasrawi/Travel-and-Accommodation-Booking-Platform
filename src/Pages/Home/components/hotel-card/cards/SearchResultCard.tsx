@@ -1,21 +1,6 @@
 import type React from "react";
+import type { SearchResult } from "@/types/hotel";
 import { discountPercentage } from "@/utils/discountPercentage";
-
-interface SearchResult {
-	hotelId: number;
-	hotelName: string;
-	roomPrice: number;
-	discount?: number;
-	roomPhotoUrl: string;
-	cityName: string;
-	starRating: number;
-	roomType: string;
-	numberOfAdults: number;
-	numberOfChildren: number;
-	numberOfRooms: number;
-	checkInDate: string;
-	checkOutDate: string;
-}
 
 import { Card } from "..";
 

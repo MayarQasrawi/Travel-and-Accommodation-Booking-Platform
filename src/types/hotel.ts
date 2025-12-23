@@ -27,6 +27,7 @@ export interface HotelDetails {
 }
 
 export interface Amenity {
+	id: number;
 	name: string;
 	description: string;
 }
@@ -58,4 +59,21 @@ export interface RoomAmenity {
 export interface GalleryImage {
 	id: number;
 	url: string;
+}
+
+export interface SearchResult {
+	hotelId: number;
+	hotelName: string;
+	roomPrice: number;
+	discount?: number;
+	roomPhotoUrl: string;
+	cityName: string;
+	starRating: number;
+	roomType: string;
+	numberOfAdults: number;
+	numberOfChildren: number;
+	numberOfRooms: number;
+	checkInDate: string;
+	checkOutDate: string;
+	amenities: Amenity[] | Amenity;
 }
