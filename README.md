@@ -38,52 +38,66 @@ Maintaining a clean and reliable codebase was a priority, supported by modern to
 
 ### User-facing Pages
 
-![Cart](docs/Cart.png)
+Home Page
+![Home Hero](docs/HomeHero.png)
 
 ![Featured Deal](docs/FeatuerdDeal.png)
 
-![No Booking](docs/NoBooking.png)
+![Recent Visit](docs/RecentVisit.png)
 
 ![Popular Destination](docs/PopularDestnation.png)
 
-![Recent Visit](docs/RecentVisit.png)
-
-![Home Hero](docs/HomeHero.png)
+Search Page
 
 ![Search Page](docs/SearchPage.png)
 
-![Checkout](docs/checkout.png)
-
-![Empty Cart](docs/emptyCart.png)
-
-![Booking Page](docs/bookinPage.png)
-
 ![Filter Sidebar](docs/filterSidebar.png)
 
-![Booking Confirmation](docs/bookingConfiramtion.png)
-
+Hotel Page
 ![Hotel Page Full Screen](docs/HotelPageFullScreen.png)
 
 ![Hotel Page Top](docs/HotelPageTop.png)
 
+Cart Page
+![Cart](docs/Cart.png)
+![Empty Cart](docs/emptyCart.png)
+
+
+Checkout Page
+![Checkout](docs/checkout.png)
 ![Confirmation Modal](docs/cofimationModer.png)
+
+Confirmation Page
+![Booking Confirmation](docs/bookingConfiramtion.png)
+
+Booking Page
+![Booking Page](docs/bookinPage.png)
+![No Booking](docs/NoBooking.png)
+
+
+
 
 ---
 
 ### Admin Pages
-
+Hotel Page
 ![Admin Hotels](docs/AdminHotels.png)
 
-![Admin Edit](docs/AdminEdite.png)
 
-![Admin Delete](docs/AdminDelete.png)
-
-![Admin Create](docs/AdminCreate.png)
+Rooms page
 
 ![Admin Rooms](docs/Admin-Rooms.png)
+Cities Page
 
 ![Admin Cities](docs/AdminCities.png)
 
+Edite Hotel
+![Admin Edit](docs/AdminEdite.png)
+delete Hotel
+![Admin Delete](docs/AdminDelete.png)
+
+Create Hotel
+![Admin Create](docs/AdminCreate.png)
 
 
 ## ⚙️ Installation and Setup
