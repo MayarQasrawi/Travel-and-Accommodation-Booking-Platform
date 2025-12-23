@@ -50,13 +50,12 @@ export const useCartStore = create<CartStore>()(
 
 			addToCart: (room, hotel, checkInDate, checkOutDate, pricePerNight) => {
 				set((state) => {
-					// Avoid duplicate booking for the same room, hotel, and dates
 					const exists = state.cartItems.some(
 						(item) =>
 							item.room.roomId === room.roomId &&
-							item.hotel.hotelName === hotel.hotelName &&
 							item.checkInDate === checkInDate.toISOString() &&
-							item.checkOutDate === checkOutDate.toISOString(),
+							item.checkOutDate === checkOutDate.toISOString() &&
+							item.pricePerNight === pricePerNight,
 					);
 
 					if (exists) return state; // Do not add duplicate
