@@ -1,11 +1,11 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { CART_KEY } from "@/constants/storage";
-import type { Hotel, Room } from "@/types/hotel";
+import type { HotelDetails, Room } from "@/types/hotel";
 
 export interface CartItem {
 	room: Room;
-	hotel: Hotel;
+	hotel: HotelDetails;
 	checkInDate: string; // Store as ISO strings
 	checkOutDate: string;
 	pricePerNight: number;
@@ -15,7 +15,7 @@ interface CartStore {
 	cartItems: CartItem[];
 	selectedIndex: number | null;
 	setSelectedIndex: (roomId: number | null) => void;
-	addToCart: (room: Room, hotel: Hotel, checkInDate: Date, checkOutDate: Date, pricePerNight: number) => void;
+	addToCart: (room: Room, hotel: HotelDetails, checkInDate: Date, checkOutDate: Date, pricePerNight: number) => void;
 	removeFromCart: (roomId: number) => void;
 	clearCart: () => void;
 }

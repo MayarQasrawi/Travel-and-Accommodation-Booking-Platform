@@ -72,7 +72,7 @@ export function PersonalDetailsForm() {
 					: null,
 			hotel: {
 				hotelName: item.hotel.hotelName,
-				city: item.hotel.cityName || "",
+				city: item.hotel.location || "",
 			},
 			room: {
 				roomId: item.room.roomId.toString(),
