@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { bookingsApi } from "@/Pages/Checkout/api";
-import type { BookingConfirmation } from "@/store/bookingStore";
+import type { BookingConfirmation } from "@/Pages/Checkout/api/types";
 
 export function useGetBookingById(bookingId?: string) {
 	return useQuery<BookingConfirmation>({
