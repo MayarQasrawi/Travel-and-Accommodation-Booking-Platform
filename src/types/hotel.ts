@@ -10,6 +10,13 @@ export interface Hotel {
 	roomPhotoUrl: string;
 	localizedName: string;
 	hotelDescription?: string;
+	discount?: number;
+	amenities?: Amenity[] | Amenity;
+	numberOfAdults?: number;
+	numberOfChildren?: number;
+	numberOfRooms?: number;
+	checkInDate?: string;
+	checkOutDate?: string;
 }
 
 export interface HotelDetails {
