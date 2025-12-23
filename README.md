@@ -14,6 +14,12 @@ The platform consists of two main interfaces, delivering a full-featured solutio
 - **Admin Interface:**  
   Provides administrators with full control to create, view, update, and delete data for cities, hotels, and rooms, ensuring efficient content management and up-to-date listings.
 
+## 🎥 Application Demo Video
+
+**Watch the full demo here:**  
+[Click to watch the video](https://drive.google.com/file/d/1ohxE6NDcIb2LcTNheaA2wUwZYJ1KxzBh/view?usp=sharing)
+
+
 ## 🛠️ Technical Stack: Built for Performance and Developer Experience
 
 Travio is built on a carefully selected stack of modern tools that optimize performance and maintainability:
@@ -33,6 +39,7 @@ Maintaining a clean and reliable codebase was a priority, supported by modern to
 - **Jest & React Testing Library:** Comprehensive testing focused on user interactions to guarantee feature reliability.  
 - **Vite:** Providing an ultra-fast development server and optimized builds for production.  
 - **VS Code:** The primary IDE, harnessing powerful debugging and TypeScript support for efficient development.
+
 ## 📸 Screenshots
 ### Login 
 <img src="docs/login.png" alt="login" width="700" />
