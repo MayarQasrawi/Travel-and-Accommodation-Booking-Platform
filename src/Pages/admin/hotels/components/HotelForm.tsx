@@ -2,7 +2,6 @@ import { Formik, type FormikHelpers } from "formik";
 import FormFooter from "@/components/Form/FormFooter";
 import FormikInput from "@/components/Form/FormikTextInput";
 // import { useCitiesQuery } from "@/Pages/admin/cities/hooks/useCitiesQuery";
-import type { Hotel } from "../api/types";
 import { hotelFormSchema } from "./hotelFormSchema";
 
 // import FormikSelect from "@/components/Form/FormikSelect";
@@ -15,7 +14,7 @@ export interface HotelFormValues {
 }
 
 interface HotelFormProps {
-	initialValues?: Hotel;
+	initialValues?: HotelFormValues;
 	onSubmit: (values: HotelFormValues, helpers: FormikHelpers<HotelFormValues>) => void;
 	onCancel: () => void;
 }
