@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import RouteErrorPage from "@/components/error/RouteErrorPage";
 import AdminLayout from "@/components/Layout/AdminLayout";
 import UserLayout from "@/components/Layout/UserLayout/UserLayout";
 import { ROUTES } from "@/constants/routes";
@@ -24,6 +25,7 @@ export const router = createBrowserRouter([
 	{
 		path: ROUTES.LOGIN,
 		element: withSuspense(<LoginPage />),
+		errorElement: <RouteErrorPage />,
 	},
 
 	{
@@ -33,6 +35,7 @@ export const router = createBrowserRouter([
 				<AdminLayout />
 			</ProtectedRoute>
 		),
+		errorElement: <RouteErrorPage />,
 		children: [
 			{
 				index: true,
@@ -56,6 +59,7 @@ export const router = createBrowserRouter([
 				<UserLayout />
 			</ProtectedRoute>
 		),
+		errorElement: <RouteErrorPage />,
 		children: [
 			{
 				index: true,
@@ -91,6 +95,7 @@ export const router = createBrowserRouter([
 	{
 		path: "/unauthorized",
 		element: <Unauthorized />,
+		errorElement: <RouteErrorPage />,
 	},
 	{
 		path: "*",

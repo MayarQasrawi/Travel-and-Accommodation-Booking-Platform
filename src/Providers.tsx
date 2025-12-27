@@ -1,6 +1,7 @@
 import { QueryClientProvider } from "@tanstack/react-query";
 import type { PropsWithChildren } from "react";
 import { useEffect } from "react";
+import { ErrorBoundary } from "@/components/error/ErrorBoundary";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/context/AuthContext";
 import { initNetworkMonitor } from "@/services/networkMonitor";
@@ -15,12 +16,13 @@ export const Providers = ({ children }: PropsWithChildren) => {
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			<AuthProvider>
-				<TravioSplash />
-				{children}
-				<Toaster position="bottom-right" richColors />
-			</AuthProvider>
-			{/* <ReactQueryDevtools initialIsOpen={false} /> */}
+			<ErrorBoundary>
+				<AuthProvider>
+					<TravioSplash />
+					{children}
+					<Toaster position="bottom-right" richColors />
+				</AuthProvider>
+			</ErrorBoundary>
 		</QueryClientProvider>
 	);
 };
