@@ -13,12 +13,18 @@ export const setAuthHeader = (token: string | null) => {
 	else delete axiosInstance.defaults.headers.common.Authorization;
 };
 
+export type ApiError = {
+	message: string;
+	code: number;
+	details?: unknown;
+};
+
 axiosInstance.interceptors.response.use(
 	(response) => response,
 	(error) => {
-		const apiError = {
+		const apiError: ApiError = {
 			message: error.response?.data?.message || error.message || "Something went wrong",
-			code: error.response?.status || 500,
+			code: error.response?.status || 0,
 			details: error.response?.data,
 		};
 		return Promise.reject(apiError);

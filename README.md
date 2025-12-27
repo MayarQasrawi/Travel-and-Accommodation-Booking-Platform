@@ -99,11 +99,18 @@ Maintaining a clean and reliable codebase was a priority, supported by modern to
 
 #### Create Hotel
 <img src="docs/AdminCreate.png" alt="Create Hotel" width="700" />
-
 ---
 
+### Error & Access Pages
+
+#### Page Not Found (404)
+<img src="docs/404.png" alt="Page Not Found" width="700" />
+
+#### Unauthorized Access
+<img src="docs/Unauthorized.png" alt="Unauthorized Access" width="700" />
 
 
+---
 
 
 ## ⚙️ Installation and Setup
