@@ -112,9 +112,23 @@ Maintaining a clean and reliable codebase was a priority, supported by modern to
 #### Create Hotel
 <img src="docs/AdminCreate.png" alt="Create Hotel" width="700" />
 
----
 
 
+## 🎨 UX Design
+
+As a starting point, I followed this UX design:
+- 🔗 [Excalidraw Wireframes](https://excalidraw.com/)
+
+
+## 📋 Project Planning & Management
+
+Project planning and task management were handled using industry-standard tools to ensure an organized and structured development process.
+
+- **Notion:**  
+  Used for project documentation, feature planning, and technical notes.
+
+- **Jira:**  
+  Used to manage tasks, track progress, and organize work using an agile workflow.
 
 
 
