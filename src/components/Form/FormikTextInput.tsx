@@ -9,6 +9,8 @@ interface FormikInputProps {
 	type?: string;
 	placeholder?: string;
 	addon?: React.ReactNode;
+	min?: number | string;
+	max?: number | string;
 }
 
 export const FormikInput: React.FC<FormikInputProps> = ({ name, ...props }) => {

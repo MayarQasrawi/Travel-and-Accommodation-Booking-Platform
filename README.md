@@ -4,6 +4,10 @@
 
 Travio is a comprehensive, high-performance web application designed to streamline the entire process of searching, booking, and managing hotel accommodations. Developed during a Frontend Internship at **Foothill Technology Solution**, this platform offers a seamless experience for both travelers and administrators, built with modern frontend architecture and a strong focus on type safety and code quality.
 
+## 📄 Software Requirements Specification (SRS)
+
+You can download the full [Software Requirements Specification (SRS) document](https://drive.google.com/file/d/1zKk3PvI_4MWlQU-QEdTGpaaMcSNuWcDV/view?usp=sharing) here.
+
 ## ✨ Key Features
 
 The platform consists of two main interfaces, delivering a full-featured solution:
@@ -14,15 +18,22 @@ The platform consists of two main interfaces, delivering a full-featured solutio
 - **Admin Interface:**  
   Provides administrators with full control to create, view, update, and delete data for cities, hotels, and rooms, ensuring efficient content management and up-to-date listings.
 
+## 🎥 Application Demo Video
+
+[![Watch Demo](docs/HomeHero.png)](https://drive.google.com/file/d/1ohxE6NDcIb2LcTNheaA2wUwZYJ1KxzBh/view?usp=sharing)
+
+Or click here to watch the [full demo video](https://drive.google.com/file/d/1ohxE6NDcIb2LcTNheaA2wUwZYJ1KxzBh/view?usp=sharing)
+
 ## 🛠️ Technical Stack: Built for Performance and Developer Experience
 
-Travio is built on a carefully selected stack of modern tools that optimize performance and maintainability:
+Travio is built on a carefully selected stack of modern tools that optimize performance and maintainability. For a detailed description of the full technical stack and tools used, please refer to the [(SRS) document](https://drive.google.com/file/d/1zKk3PvI_4MWlQU-QEdTGpaaMcSNuWcDV/view?usp=sharing)
 
 - **React 19 & TypeScript:** Building scalable, type-safe user interfaces that catch errors early and enhance developer productivity.  
 - **Tailwind CSS & ShadCN UI:** Delivering fast, consistent, and accessible styling with a utility-first approach.  
 - **Zustand & TanStack Query:** Managing complex application state and server-side data fetching efficiently.  
 - **Formik & Yup:** Handling form state and validation robustly for smooth user interactions.  
 - **React Router (v7):** Enabling intuitive and seamless client-side navigation.
+
 
 ## 🚀 Ensuring Code Quality and Developer Efficiency
 
@@ -33,6 +44,7 @@ Maintaining a clean and reliable codebase was a priority, supported by modern to
 - **Jest & React Testing Library:** Comprehensive testing focused on user interactions to guarantee feature reliability.  
 - **Vite:** Providing an ultra-fast development server and optimized builds for production.  
 - **VS Code:** The primary IDE, harnessing powerful debugging and TypeScript support for efficient development.
+
 ## 📸 Screenshots
 ### Login 
 <img src="docs/login.png" alt="login" width="700" />
@@ -99,15 +111,28 @@ Maintaining a clean and reliable codebase was a priority, supported by modern to
 
 #### Create Hotel
 <img src="docs/AdminCreate.png" alt="Create Hotel" width="700" />
----
+
 
 ### Error & Access Pages
 
 #### Page Not Found (404)
 <img src="docs/404.png" alt="Page Not Found" width="700" />
 
-#### Unauthorized Access
-<img src="docs/Unauthorized.png" alt="Unauthorized Access" width="700" />
+## 🎨 UX Design
+
+As a starting point, I followed this UX design:
+- 🔗 [Excalidraw Wireframes](https://excalidraw.com/)
+
+
+## 📋 Project Planning & Management
+
+Project planning and task management were handled using industry-standard tools to ensure an organized and structured development process.
+
+- **Notion:**  
+  Used for project documentation, feature planning, and technical notes.
+
+- **Jira:**  
+  Used to manage tasks, track progress, and organize work using an agile workflow.
 
 
 ---

@@ -13,7 +13,7 @@ interface CrudPageProps<T extends { id: number; name: string }> {
 	searchPlaceholder?: string;
 }
 
-export function CrudPage<T extends { id: number; name: string }>({
+export function CrudPage<T extends { id: number; name: string; roomId?: number }>({
 	label,
 	table,
 	form,

@@ -5,7 +5,7 @@ export function useDeleteRoomMutation() {
 	const queryClient = useQueryClient();
 
 	return useMutation({
-		mutationFn: (roomId: number) => roomsApi.deleteRoom(roomId),
+		mutationFn: (roomId: number | undefined) => roomsApi.deleteRoom(roomId),
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ["rooms"] });
 		},

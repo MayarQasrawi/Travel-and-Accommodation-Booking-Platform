@@ -72,7 +72,7 @@ export function PersonalDetailsForm() {
 					: null,
 			hotel: {
 				hotelName: item.hotel.hotelName,
-				city: item.hotel.cityName || "",
+				city: item.hotel.location || "",
 			},
 			room: {
 				roomId: item.room.roomId.toString(),
@@ -87,6 +87,8 @@ export function PersonalDetailsForm() {
 
 		createBooking(bookingData!, {
 			onSuccess: (response) => {
+				console.log("Creating booking with data:", bookingData);
+				console.log("Booking created successfully:", response);
 				removeFromCart(selectedIndex!);
 				navigate(`${ROUTES.USER.CONFIRMATION}?bookingId=${response.confirmationNumber}`);
 				setSubmitting(false);

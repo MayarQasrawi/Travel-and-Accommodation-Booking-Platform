@@ -1,11 +1,11 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import { CART_KEY } from "@/constants/storage";
-import type { Hotel, Room } from "@/types/hotel";
+import type { HotelDetails, Room } from "@/types/hotel";
 
 export interface CartItem {
 	room: Room;
-	hotel: Hotel;
+	hotel: HotelDetails;
 	checkInDate: string; // Store as ISO strings
 	checkOutDate: string;
 	pricePerNight: number;
@@ -15,7 +15,7 @@ interface CartStore {
 	cartItems: CartItem[];
 	selectedIndex: number | null;
 	setSelectedIndex: (roomId: number | null) => void;
-	addToCart: (room: Room, hotel: Hotel, checkInDate: Date, checkOutDate: Date, pricePerNight: number) => void;
+	addToCart: (room: Room, hotel: HotelDetails, checkInDate: Date, checkOutDate: Date, pricePerNight: number) => void;
 	removeFromCart: (roomId: number) => void;
 	clearCart: () => void;
 }
@@ -42,43 +42,46 @@ function calculateNights(checkInDate: string, checkOutDate: string): number {
 
 export const useCartStore = create<CartStore>()(
 	persist(
-		(set) => ({
+		(set, get) => ({
 			cartItems: [],
 			selectedIndex: null,
 
-			setSelectedIndex: (roomId) => set({ selectedIndex: roomId }),
+			setSelectedIndex: (roomId: number | null) => set({ selectedIndex: roomId }),
 
 			addToCart: (room, hotel, checkInDate, checkOutDate, pricePerNight) => {
-				set((state) => {
-					// Avoid duplicate booking for the same room, hotel, and dates
-					const exists = state.cartItems.some(
-						(item) =>
-							item.room.roomId === room.roomId &&
-							item.hotel.hotelName === hotel.hotelName &&
-							item.checkInDate === checkInDate.toISOString() &&
-							item.checkOutDate === checkOutDate.toISOString(),
-					);
+				const checkInISO = checkInDate.toISOString();
+				const checkOutISO = checkOutDate.toISOString();
 
-					if (exists) return state; // Do not add duplicate
+				console.log("CartStore: Adding to cart", { room, hotel, checkInISO, checkOutDate, pricePerNight });
 
-					return {
-						cartItems: [
-							...state.cartItems,
-							{
-								room,
-								hotel,
-								checkInDate: checkInDate.toISOString(),
-								checkOutDate: checkOutDate.toISOString(),
-								pricePerNight,
-							},
-						],
-					};
-				});
+				const exists = get().cartItems.some(
+					(item) =>
+						item.room.roomId === room.roomId &&
+						item.hotel.hotelName === hotel.hotelName &&
+						// item.checkInDate === checkInISO &&
+						// item.checkOutDate === checkOutISO &&
+						item.pricePerNight === pricePerNight,
+				);
+
+				if (exists) return;
+
+				set((state) => ({
+					cartItems: [
+						...state.cartItems,
+						{
+							room,
+							hotel,
+							checkInDate: checkInISO,
+							checkOutDate: checkOutISO,
+							pricePerNight,
+						},
+					],
+				}));
 			},
 
-			removeFromCart: (roomId) =>
+			removeFromCart: (roomId: number) =>
 				set((state) => ({
-					cartItems: state.cartItems.filter((item) => !(item.room.roomId === roomId)),
+					cartItems: state.cartItems.filter((item) => item.room.roomId !== roomId),
 				})),
 
 			clearCart: () => set({ cartItems: [], selectedIndex: null }),

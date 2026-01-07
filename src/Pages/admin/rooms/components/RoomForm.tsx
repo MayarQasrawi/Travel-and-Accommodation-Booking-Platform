@@ -1,9 +1,8 @@
-import { Field, Formik, type FormikHelpers } from "formik";
+import { Formik, type FormikHelpers } from "formik";
 import FormFooter from "@/components/Form/FormFooter";
 import FormikInput from "@/components/Form/FormikTextInput";
-import { Checkbox } from "@/components/ui/checkbox"; // import shadcn checkbox
-import { Label } from "@/components/ui/label"; // optional for label styling
-import type { Room } from "../api/types";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 import { roomFormSchema } from "./roomFormSchema";
 
 export interface RoomFormValues {
@@ -15,7 +14,7 @@ export interface RoomFormValues {
 }
 
 interface RoomFormProps {
-	initialValues?: Room;
+	initialValues?: RoomFormValues;
 	onSubmit: (values: RoomFormValues, helpers: FormikHelpers<RoomFormValues>) => void;
 	onCancel: () => void;
 }
@@ -58,17 +57,10 @@ export function RoomForm({ initialValues, onSubmit, onCancel }: RoomFormProps) {
 		<Formik initialValues={defaultValues} validationSchema={roomFormSchema} onSubmit={onSubmit} enableReinitialize>
 			{({ isSubmitting, handleSubmit, values, setFieldValue }) => (
 				<form className="space-y-6" onSubmit={handleSubmit}>
-					{fields.map((field) => (
-						<FormikInput
-							key={field.name}
-							label={field.label}
-							name={field.name}
-							placeholder={field.placeholder}
-							type={field.type}
-							min={field.min}
-							max={field.max}
-						/>
-					))}
+					{fields.map((field) => {
+						const { min, max, ...inputProps } = field;
+						return <FormikInput key={field.name} {...inputProps} min={min} max={max} />;
+					})}
 
 					<div className="flex items-center space-x-2">
 						<Checkbox

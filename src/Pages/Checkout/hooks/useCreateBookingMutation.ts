@@ -9,7 +9,7 @@ export function useCreateBookingMutation() {
 		mutationFn: (data: CreateBookingData) => bookingsApi.createBooking(data),
 		onSuccess: (data) => {
 			queryClient.invalidateQueries({ queryKey: ["bookings"] });
-			queryClient.setQueryData(["booking", data.id], data);
+			queryClient.setQueryData(["booking", data.confirmationNumber], data);
 		},
 		onError: (error: Error) => {
 			console.error("Error creating booking:", error);

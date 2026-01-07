@@ -25,13 +25,19 @@ export function HotelFormSheet({ open, onOpenChange, hotel }: HotelFormSheetProp
 		helpers.resetForm();
 	};
 
+	const defaultValues: HotelFormValues = {
+		hotelName: hotel?.hotelName || "",
+		location: hotel?.location || "",
+		starRating: hotel?.starRating || 3,
+	};
+
 	return (
 		<FormSheet<HotelFormValues>
 			open={open}
 			onOpenChange={onOpenChange}
 			title={hotel ? "Edit Hotel" : "Create New Hotel"}
 			description={hotel ? "Update the hotel information below." : "Fill in the information to create a new hotel."}
-			initialValues={hotel}
+			initialValues={defaultValues}
 			onSubmit={handleSubmit}
 			FormComponent={HotelForm}
 		/>

@@ -59,7 +59,7 @@ export function HotelSection<T extends BaseHotel>({
 					<div className="lg:w-2/3 space-y-6">
 						<div className="grid   grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
 							{isLoading
-								? Array.from({ length: 3 }).map((_, i) => <HotelCardSkeleton key={nanoid()} />)
+								? Array.from({ length: 3 }).map((_) => <HotelCardSkeleton key={nanoid()} />)
 								: hotels.slice(0, 3).map((hotel) => <CardComponent key={hotel?.hotelId} hotel={hotel} />)}
 						</div>
 					</div>

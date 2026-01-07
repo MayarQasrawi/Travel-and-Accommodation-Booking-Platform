@@ -1,16 +1,19 @@
 import type React from "react";
+import type { SearchResult } from "@/types/hotel";
 import { discountPercentage } from "@/utils/discountPercentage";
-import type { Hotel } from "../../../hooks/useSearchHotels";
+
 import { Card } from "..";
 
 interface SearchResultCardProps {
-	result: Hotel;
+	result: SearchResult;
 	onBookNow?: (hotelId: number) => void;
 }
 
 export const SearchResultCard: React.FC<SearchResultCardProps> = ({ result, onBookNow }) => {
-	const hasDiscount = result.discount > 0;
-	const discountedPrice = hasDiscount ? result.roomPrice - result.discount : result.roomPrice;
+	const discountValue = result.discount ?? 0;
+	const hasDiscount = discountValue > 0;
+	const discountedPrice = hasDiscount ? result.roomPrice - discountValue : result.roomPrice;
+
 	const discount = discountPercentage({
 		originalPrice: result.roomPrice,
 		finalPrice: discountedPrice,
