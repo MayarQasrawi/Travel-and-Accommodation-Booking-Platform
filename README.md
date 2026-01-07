@@ -113,6 +113,10 @@ Maintaining a clean and reliable codebase was a priority, supported by modern to
 <img src="docs/AdminCreate.png" alt="Create Hotel" width="700" />
 
 
+### Error & Access Pages
+
+#### Page Not Found (404)
+<img src="docs/404.png" alt="Page Not Found" width="700" />
 
 ## 🎨 UX Design
 
@@ -130,6 +134,8 @@ Project planning and task management were handled using industry-standard tools 
 - **Jira:**  
   Used to manage tasks, track progress, and organize work using an agile workflow.
 
+
+---
 
 
 ## ⚙️ Installation and Setup
